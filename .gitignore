@@ -1,0 +1,24 @@
+# Video e file pesanti: restano sul PC, non su GitHub
+*.mp4
+*.mov
+*.MOV
+*.m4v
+*.avi
+*.wav
+*.aif
+materiali/video/
+materiali/grezzi/
+
+# File di sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/

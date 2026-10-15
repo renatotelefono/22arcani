@@ -1,0 +1,1 @@
+Script di supporto del sito (es. generatore delle pagine degli Arcani).
