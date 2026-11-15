@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#111111">
+  <script src="/pwa.js" defer></script>
+  <script src="/analytics.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La carta dei tarocchi del tuo segno zodiacale: gli Arcani dei 12 segni | Zodiel</title>
+  <meta name="description" content="Qual è l&#x27;Arcano Maggiore del tuo segno zodiacale? Le corrispondenze tradizionali tra i 12 segni, i pianeti e le carte dei tarocchi, con il significato di ogni carta.">
+  <link rel="canonical" href="https://zodiel.cloud/segni/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La carta dei tarocchi del tuo segno zodiacale: gli Arcani dei 12 segni | Zodiel">
+  <meta property="og:description" content="Qual è l&#x27;Arcano Maggiore del tuo segno zodiacale? Le corrispondenze tradizionali tra i 12 segni, i pianeti e le carte dei tarocchi, con il significato di ogni carta.">
+  <meta property="og:url" content="https://zodiel.cloud/segni/">
+  <meta property="og:image" content="https://zodiel.cloud/asset/img_it/21_il_mondo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/arcani/arcani.css">
+  <style>
+    .cielo-blocco { margin: 26px 0; padding: 18px 22px; border-radius: 12px; background: rgba(63,224,208,.07); }
+    .cielo-blocco h2 { margin-top: 0; font-size: 22px; }
+    .cielo-grande { font-size: 24px; color: #40E0D0; margin: 4px 0; }
+    .cielo-dettaglio { opacity: .75; margin: 0 0 10px; font-size: 16px; }
+    .cielo-carta, .scheda { display: flex; gap: 18px; align-items: flex-start; margin: 18px 0; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); }
+    .cielo-carta img, .scheda img { flex: none; border-radius: 6px; }
+    .cielo-carta h3, .scheda h3 { margin: 0 0 4px; }
+    .cielo-motivo { font-style: italic; opacity: .85; margin: 0 0 6px; }
+    .cielo-eventi li, .lune li { margin-bottom: 6px; }
+    .mese { margin-top: 26px; }
+    .periodo { padding: 12px 16px; border-left: 3px solid #40E0D0; margin: 12px 0; background: rgba(63,224,208,.05); }
+    .oggi-segno { padding: 12px 16px; border-radius: 10px; background: rgba(63,224,208,.12); text-align: center; }
+    .avvertenza { font-size: 15px; opacity: .75; font-style: italic; }
+    @media (max-width: 600px) { .cielo-carta, .scheda { flex-direction: column; align-items: center; text-align: center; } }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Zodiel", "item": "https://zodiel.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Arcani e segni", "item": "https://zodiel.cloud/segni/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual è la carta dei tarocchi del mio segno zodiacale?", "acceptedAnswer": {"@type": "Answer", "text": "Ariete: l'Imperatore. Toro: il Papa. Gemelli: gli Amanti. Cancro: il Carro. Leone: la Forza. Vergine: l'Eremita. Bilancia: la Giustizia. Scorpione: la Morte. Sagittario: la Temperanza. Capricorno: il Diavolo. Acquario: la Stella. Pesci: la Luna."}}, {"@type": "Question", "name": "Da dove vengono queste corrispondenze?", "acceptedAnswer": {"@type": "Answer", "text": "Sono le corrispondenze della tradizione esoterica di fine Ottocento, poi riprese dal mazzo Rider-Waite e dalla maggior parte dei mazzi moderni. Sono simboliche: servono come spunto di riflessione."}}]}</script>
+</head>
+<body>
+  <header class="testata">
+    <a class="logo" href="/">Zodiel</a>
+    <nav><a href="/cielo/">Il cielo di oggi</a> <a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
+  </header>
+
+  <main class="arcano">
+    <p class="briciole"><a href="/">Home</a> &rsaquo; Arcani e segni</p>
+    <h1>La carta dei tarocchi del tuo segno zodiacale</h1>
+    <p>Nella tradizione dei tarocchi più diffusa nei mazzi moderni, nata alla fine dell'Ottocento, ogni <strong>segno zodiacale</strong> è legato a un <strong>Arcano Maggiore</strong>, e ogni segno ha anche un <strong>pianeta</strong> che lo governa, con la sua carta. Ecco l'Arcano del tuo segno.</p>
+    <p class="oggi-segno" id="segno-oggi"></p>
+    <section class="scheda" id="ariete">
+      <img src="/asset/img_web/04_l_imperatore_240.webp" alt="L&#x27;Imperatore" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Ariete · L&#x27;Imperatore</h3>
+        <p class="cielo-motivo">21 marzo – 19 aprile · segno di fuoco</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/l-imperatore">L&#x27;Imperatore</a>. L&#x27;Imperatore riflette lo slancio dell&#x27;Ariete verso l&#x27;azione e il desiderio di guidare: forza di volontà, iniziativa, capacità di dare una direzione.</p>
+        <p><strong>Il pianeta del segno:</strong> Marte è legato alla Torre: l'energia che rompe ciò che è rigido per fare spazio al nuovo. Carta: <a href="/arcani/la-torre">La Torre</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="toro">
+      <img src="/asset/img_web/05_il_papa_240.webp" alt="Il Papa" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Toro · Il Papa</h3>
+        <p class="cielo-motivo">20 aprile – 20 maggio · segno di terra</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/il-papa">Il Papa</a>. Il Papa parla di valori solidi, tradizione e fiducia: come il Toro, cerca basi stabili e ciò che dura nel tempo.</p>
+        <p><strong>Il pianeta del segno:</strong> Venere è legata all'Imperatrice: bellezza, piacere dei sensi e cura. Carta: <a href="/arcani/l-imperatrice">L&#x27;Imperatrice</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="gemelli">
+      <img src="/asset/img_web/06_gli_amanti_240.webp" alt="Gli Amanti" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Gemelli · Gli Amanti</h3>
+        <p class="cielo-motivo">21 maggio – 20 giugno · segno d'aria</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/gli-amanti">Gli Amanti</a>. Gli Amanti raccontano la scelta e l&#x27;incontro: come i Gemelli, vivono di relazioni, dialogo e possibilità diverse.</p>
+        <p><strong>Il pianeta del segno:</strong> Mercurio è legato al Mago: parola, ingegno e capacità di trasformare le idee in azione. Carta: <a href="/arcani/il-mago">Il Mago</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="cancro">
+      <img src="/asset/img_web/07_il_carro_240.webp" alt="Il Carro" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Cancro · Il Carro</h3>
+        <p class="cielo-motivo">21 giugno – 22 luglio · segno d'acqua</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/il-carro">Il Carro</a>. Il Carro unisce emozione e determinazione: come il Cancro, protegge ciò che ama e avanza guidato dal cuore.</p>
+        <p><strong>Il pianeta del segno:</strong> la Luna è legata alla Papessa: intuizione, mondo interiore e ascolto. Carta: <a href="/arcani/la-papessa">La Papessa</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="leone">
+      <img src="/asset/img_web/08_la_forza_240.webp" alt="La Forza" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Leone · La Forza</h3>
+        <p class="cielo-motivo">23 luglio – 22 agosto · segno di fuoco</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-forza">La Forza</a>. La Forza è il coraggio gentile: come il Leone, ha un cuore grande e vince le paure con la calma, non con la violenza.</p>
+        <p><strong>Il pianeta del segno:</strong> il Sole è legato all'arcano del Sole: gioia, vitalità e voglia di risplendere. Carta: <a href="/arcani/il-sole">Il Sole</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="vergine">
+      <img src="/asset/img_web/09_l_eremita_240.webp" alt="L&#x27;Eremita" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Vergine · L&#x27;Eremita</h3>
+        <p class="cielo-motivo">23 agosto – 22 settembre · segno di terra</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/l-eremita">L&#x27;Eremita</a>. L&#x27;Eremita cerca la verità con pazienza e metodo: come la Vergine, osserva i dettagli e trova la propria luce nella riflessione.</p>
+        <p><strong>Il pianeta del segno:</strong> Mercurio è legato al Mago: parola, ingegno e capacità di trasformare le idee in azione. Carta: <a href="/arcani/il-mago">Il Mago</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="bilancia">
+      <img src="/asset/img_web/11_la_giustizia_240.webp" alt="La Giustizia" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Bilancia · La Giustizia</h3>
+        <p class="cielo-motivo">23 settembre – 22 ottobre · segno d'aria</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-giustizia">La Giustizia</a>. La Giustizia cerca equilibrio e onestà: come la Bilancia, pesa le scelte e desidera armonia nei rapporti.</p>
+        <p><strong>Il pianeta del segno:</strong> Venere è legata all'Imperatrice: bellezza, piacere dei sensi e cura. Carta: <a href="/arcani/l-imperatrice">L&#x27;Imperatrice</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="scorpione">
+      <img src="/asset/img_web/13_la_morte_240.webp" alt="La Morte" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Scorpione · La Morte</h3>
+        <p class="cielo-motivo">23 ottobre – 21 novembre · segno d'acqua</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-morte">La Morte</a>. La Morte è la carta della trasformazione profonda: come lo Scorpione, non teme di chiudere un ciclo per rinascere.</p>
+        <p><strong>Il pianeta del segno:</strong> Marte (governatore tradizionale) è legato alla Torre: l'energia che rompe ciò che è rigido per fare spazio al nuovo. Carta: <a href="/arcani/la-torre">La Torre</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="sagittario">
+      <img src="/asset/img_web/14_la_temperanza_240.webp" alt="La Temperanza" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Sagittario · La Temperanza</h3>
+        <p class="cielo-motivo">22 novembre – 21 dicembre · segno di fuoco</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-temperanza">La Temperanza</a>. La Temperanza unisce gli opposti e cerca la misura: come il Sagittario, punta lontano e trova un senso più ampio nel viaggio.</p>
+        <p><strong>Il pianeta del segno:</strong> Giove è legato alla Ruota della Fortuna: fiducia, espansione e occasioni. Carta: <a href="/arcani/la-ruota-della-fortuna">La Ruota della Fortuna</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="capricorno">
+      <img src="/asset/img_web/15_il_diavolo_240.webp" alt="Il Diavolo" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Capricorno · Il Diavolo</h3>
+        <p class="cielo-motivo">22 dicembre – 19 gennaio · segno di terra</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/il-diavolo">Il Diavolo</a>. Il Diavolo parla di ambizione e di legami con la materia: come il Capricorno, invita a riconoscere ciò che trattiene per salire più in alto in libertà.</p>
+        <p><strong>Il pianeta del segno:</strong> Saturno è legato al Mondo: tempo, maturità e traguardi raggiunti con costanza. Carta: <a href="/arcani/il-mondo">Il Mondo</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="acquario">
+      <img src="/asset/img_web/17_la_stella_240.webp" alt="La Stella" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Acquario · La Stella</h3>
+        <p class="cielo-motivo">20 gennaio – 18 febbraio · segno d'aria</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-stella">La Stella</a>. La Stella è speranza e visione del futuro: come l&#x27;Acquario, guarda avanti e crede in un&#x27;idea più grande.</p>
+        <p><strong>Il pianeta del segno:</strong> Saturno (governatore tradizionale) è legato al Mondo: tempo, maturità e traguardi raggiunti con costanza. Carta: <a href="/arcani/il-mondo">Il Mondo</a>.</p>
+      </div>
+    </section>
+    <section class="scheda" id="pesci">
+      <img src="/asset/img_web/18_la_luna_240.webp" alt="La Luna" width="120" height="201" loading="lazy">
+      <div>
+        <h3>Pesci · La Luna</h3>
+        <p class="cielo-motivo">19 febbraio – 20 marzo · segno d'acqua</p>
+        <p><strong>L'Arcano del segno:</strong> <a href="/arcani/la-luna">La Luna</a>. La Luna è sogno, intuizione e sensibilità: come i Pesci, attraversa le emozioni profonde e il mondo invisibile.</p>
+        <p><strong>Il pianeta del segno:</strong> Giove (governatore tradizionale) è legato alla Ruota della Fortuna: fiducia, espansione e occasioni. Carta: <a href="/arcani/la-ruota-della-fortuna">La Ruota della Fortuna</a>.</p>
+      </div>
+    </section>
+    <section class="cielo-blocco">
+      <h2>Gli Arcani degli elementi</h2>
+      <p>Tre carte sono legate agli elementi: <a href="/arcani/il-matto">Il Matto</a> all'<strong>aria</strong>, <a href="/arcani/l-appeso">L&#x27;Appeso</a> all'<strong>acqua</strong> e <a href="/arcani/il-giudizio">Il Giudizio</a> al <strong>fuoco</strong>. Quando la Luna passa in un segno del loro elemento, queste carte parlano con più forza: lo vedi ogni giorno nel <a href="/cielo/">cielo di oggi</a>.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande frequenti</h2>
+      <h3>Qual è la carta dei tarocchi del mio segno zodiacale?</h3>
+      <p>Ariete: l'Imperatore. Toro: il Papa. Gemelli: gli Amanti. Cancro: il Carro. Leone: la Forza. Vergine: l'Eremita. Bilancia: la Giustizia. Scorpione: la Morte. Sagittario: la Temperanza. Capricorno: il Diavolo. Acquario: la Stella. Pesci: la Luna.</p>
+      <h3>Da dove vengono queste corrispondenze?</h3>
+      <p>Sono le corrispondenze della tradizione esoterica di fine Ottocento, poi riprese dal mazzo Rider-Waite e dalla maggior parte dei mazzi moderni. Sono simboliche: servono come spunto di riflessione.</p>
+    </section>
+
+    <section class="finale">
+      <h2>La tua lettura del momento</h2>
+      <p>Mescola il mazzo e scegli tre carte: alla fine, la sintesi della tua lettura si collega al cielo di quel momento, con la fase della Luna, i segni e i pianeti. È gratuita e non serve registrarsi.</p>
+      <a class="cta" href="/master">Inizia la lettura</a>
+    </section>
+    <p class="avvertenza">I collegamenti tra tarocchi e astri seguono la tradizione simbolica: sono uno spunto di riflessione, non una previsione. Le date e le posizioni dei pianeti sono invece calcolate con precisione astronomica (ora italiana).</p>
+  </main>
+
+  <footer class="piede"><a href="/">zodiel.cloud</a> · <a href="/cielo/">Il cielo di oggi</a> · <a href="/calendario-lunare-2027/">Calendario lunare 2027</a> · <a href="/mercurio-retrogrado-2027/">Mercurio retrogrado 2027</a> · <a href="/segni/">Arcani e segni</a> · <a href="/arcani/">Arcani Maggiori</a> · <a href="/privacy">Privacy e cookie</a></footer>
+  <script src="/sintesi_dati.js"></script>
+  <script src="/cielo.js"></script>
+  <script src="/momento_dati.js"></script>
+  <script src="/motore_momento.js"></script>
+  <script>
+  (function () {
+    try {
+      var c = zodielCielo(new Date()), D = ZODIEL_MOMENTO;
+      if (!c.disponibile) return;
+      var s = D.segni[c.segnoSole], id = s.toLowerCase();
+      document.getElementById("segno-oggi").innerHTML = "Oggi il Sole è in <a href='#" + id + "'>" + s + "</a> e la Luna in <a href='#" +
+        D.segni[c.segnoLuna].toLowerCase() + "'>" + D.segni[c.segnoLuna] + "</a>.";
+      var el = document.getElementById(id); if (el) el.style.background = "rgba(63,224,208,.10)";
+    } catch (e) {}
+  })();
+  </script>
+</body>
+</html>

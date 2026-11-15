@@ -1,0 +1,23 @@
+{
+  "name": "Zodiel – Tarocchi online",
+  "short_name": "Zodiel",
+  "description": "Lettura dei tarocchi gratuita: passato, presente e futuro, la carta del giorno e il significato dei 22 Arcani Maggiori.",
+  "lang": "it",
+  "id": "/",
+  "start_url": "/?utm_source=pwa&utm_medium=app&utm_campaign=home",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "categories": ["entertainment", "lifestyle"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Fai una lettura", "url": "/master?utm_source=pwa&utm_medium=app&utm_campaign=scorciatoia", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Arcani Maggiori", "url": "/arcani/?utm_source=pwa&utm_medium=app&utm_campaign=scorciatoia", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

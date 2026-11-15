@@ -1,0 +1,19 @@
+# Configurazione del prototipo (Worker separato dal sito, nome: zodiel-interprete)
+name = "zodiel-interprete"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Collega Workers AI (nessuna chiave da gestire: usa il tuo account Cloudflare)
+[ai]
+binding = "AI"
+
+[vars]
+MODALITA_PROVA = "si"          # mostra la pagina di prova su "/". Metti "no" quando lo usi dal sito.
+MODELLO = "@cf/mistralai/mistral-small-3.1-24b-instruct"
+ORIGINI_CONSENTITE = "https://zodiel.cloud,https://www.zodiel.cloud"
+
+# Limite: massimo 5 letture al minuto per indirizzo IP
+[[ratelimits]]
+name = "LIMITE"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }

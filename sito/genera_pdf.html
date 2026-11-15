@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="analytics.js"></script>
+  <script src="sintesi_dati.js?v=20261004"></script>
+  <script src="sintesi.js?v=20261004"></script>
+  <meta name="robots" content="noindex">
+  <title>Genera PDF - Lettura dei Tarocchi</title>
+
+  <!-- Libreria jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stile.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #40E0D0;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contenitore-pdf {
+      margin-top: 100px;
+    }
+
+    button {
+      margin: 20px;
+      padding: 12px 30px;
+      background-color: #40E0D0;
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 0 15px #40E0D0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #40E0D0;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenitore-pdf">
+    <h2>Generazione PDF della Lettura</h2>
+    <p>Questo PDF conterrà le tre carte scelte e la loro interpretazione.</p>
+
+    <button id="btnGenera">Genera</button>
+    <button onclick="window.location.href='master.html'">Torna indietro</button>
+  </div>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    document.getElementById("btnGenera").addEventListener("click", async () => {
+      const lettura = JSON.parse(sessionStorage.getItem("lettura"));
+      if (!lettura) {
+        alert("Non è stata trovata alcuna lettura. Torna indietro e seleziona tre carte.");
+        return;
+      }
+
+      const doc = new jsPDF();
+      const posizioni = ["passato", "presente", "futuro"];
+
+      for (let i = 0; i < posizioni.length; i++) {
+        const pos = posizioni[i];
+        const carta = lettura[pos];
+        if (!carta) continue;
+
+        // Nuova pagina per ogni sezione, tranne la prima
+        if (i > 0) doc.addPage();
+
+        let y = 20;
+
+        doc.setFont("helvetica", "bold");
+doc.setFontSize(18);
+doc.text(`Lettura dei Tarocchi - ${pos.charAt(0).toUpperCase() + pos.slice(1)}`, 105, y, { align: "center" });
+y += 8;
+
+// Aggiunge la data corrente in formato "2 Novembre 2025"
+const oggi = new Date();
+const opzioniData = { day: 'numeric', month: 'long', year: 'numeric' };
+const dataFormattata = oggi.toLocaleDateString('it-IT', opzioniData);
+doc.setFont("helvetica", "normal");
+doc.setFontSize(12);
+doc.text(`Lettura del ${dataFormattata}`, 105, y, { align: "center" });
+y += 10;
+
+
+        doc.setFontSize(14);
+        doc.text(`${carta.nome}`, 105, y, { align: "center" });
+        y += 10;
+
+        // Carica immagine
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = carta.img;
+        await new Promise(resolve => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+
+        // Prepara immagine ruotata se necessario
+        let finalData;
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        if (carta.dritta) {
+          ctx.drawImage(img, 0, 0);
+        } else {
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.rotate(Math.PI);
+          ctx.drawImage(img, -img.width / 2, -img.height / 2);
+        }
+        finalData = canvas.toDataURL("image/jpeg", 1.0);
+
+        // Inserisce immagine centrata
+        const imgW = 60;
+        const imgH = 100;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const imgX = (pageWidth - imgW) / 2;
+        doc.addImage(finalData, "JPEG", imgX, y, imgW, imgH);
+        y += imgH + 15;
+
+        // Carica e scrive la descrizione
+        const orientamento = carta.dritta ? "" : "_r";
+        const nomeFile = `${carta.nome}${orientamento}_${pos.charAt(0).toUpperCase() + pos.slice(1)}.md`;
+
+        try {
+          const resp = await fetch(`asset/descrizione_it/${nomeFile}`);
+          const testo = await resp.text();
+          // Trasforma i punti in ritorni a capo e pulisci testo
+const testoPulito = testo
+  .replace(/\n+/g, " ")       // rimuove doppie righe
+  .replace(/\.\s*/g, ".\n")   // va a capo dopo ogni punto
+  .trim();
+
+
+
+// Imposta font e stile
+doc.setFont("helvetica", "normal");
+doc.setFontSize(12);
+
+// Imposta margini simmetrici
+const pageWidth = doc.internal.pageSize.getWidth();
+const margin = 20; // margine sinistro e destro uguali
+const textWidth = pageWidth - margin * 2;
+
+// Suddivide il testo per adattarlo ai margini
+const linee = doc.splitTextToSize(testoPulito, textWidth);
+
+// Scrive testo con margini uniformi
+doc.text(linee, margin, y, { align: "left" });
+
+
+       
+        } catch {
+          doc.text("Descrizione non disponibile.", 20, y);
+        }
+      }
+
+      // ✨ Pagina finale: sintesi della lettura
+      const sintesi = window.creaSintesi ? window.creaSintesi(lettura) : null;
+      if (sintesi) {
+        doc.addPage();
+        let ys = 25;
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(18);
+        doc.text(sintesi.titolo, 105, ys, { align: "center" });
+        ys += 14;
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        const larghezza = doc.internal.pageSize.getWidth() - 40;
+        sintesi.paragrafi.forEach(p => {
+          const testo = p.replace(/<[^>]+>/g, "");
+          const righe = doc.splitTextToSize(testo, larghezza);
+          doc.text(righe, 20, ys);
+          ys += righe.length * 6 + 5;
+        });
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text("I tarocchi sono uno spunto di riflessione, non una previsione certa. - zodiel.cloud", 105, 285, { align: "center" });
+      }
+
+      doc.save("lettura_tarocchi.pdf");
+      traccia("pdf_generato");
+    });
+  </script>
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
+</body>
+</html>

@@ -1,0 +1,190 @@
+body {
+  background-color: #000;
+  color: #40E0D0;
+  font-family: 'Cinzel Decorative', 'Playfair Display', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.barra {
+  background-color: #111;
+  padding: 12px;
+  box-shadow: 0 0 15px #40E0D0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.barra button {
+  background-color: #40E0D0;
+  border: none;
+  border-radius: 25px;
+  padding: 18px 40px;       /* pulsanti più alti e larghi */
+  color: #111;
+  font-weight: bold;
+  font-size: 22px;          /* testo più grande */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #40E0D0;
+}
+
+
+.barra button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #40E0D0;
+}
+
+/* Layout principale */
+.area-lettura {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.slot-container {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  margin-bottom: 60px;
+}
+
+/* 🔮 Slot delle carte rivelate */
+.slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;         /* dimensione coerente */
+  height: 500px;
+  border: 2px solid #40E0D0;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #40E0D0;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 10px;
+}
+
+
+.slot h3 {
+  color: #40E0D0;
+  margin-top: 10px;
+  text-shadow: 0 0 2px #40E0D0;
+  /* font-family rimosso per ereditare il font globale */
+}
+
+/* Mazzo */
+.area-mazzo {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.riga-carte {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.carta {
+  width: 120px;
+  height: 201px; /* proporzione corretta 1:1.68 */
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #40E0D0;
+  transition: transform 0.8s ease;
+}
+
+
+.carta:hover {
+  transform: scale(1.08);
+}
+
+/* 🔮 Carte scoperte */
+.carta-scoperta {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #40E0D0;
+  transition: transform 0.4s ease;
+}
+
+/* === Effetto "impila sulla prima" === */
+.mazzo.animazione img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 1s ease-in-out;
+}
+
+.mazzo.animazione img.impilata {
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  z-index: 50;
+}
+
+.mazzo.ridistribuita img {
+  transition: all 1s ease-in-out;
+}
+button {
+  font-size: 22px !important;
+  padding: 16px 40px !important;
+  border-radius: 20px !important;
+}
+
+/* ==========================================================
+   PC / schermi larghi: slot e mazzo affiancati,
+   tutto visibile senza scorrere (il cellulare non cambia)
+   ========================================================== */
+@media (min-width: 1000px) and (orientation: landscape) {
+  :root {
+    --altezza-utile: calc(100vh - 130px);   /* altezza finestra meno la barra */
+    --gap-carte: 12px;
+    --larg-carta: min(calc((var(--altezza-utile) - 3 * var(--gap-carte)) / 4 / 1.675),
+                      calc((42vw - 5 * var(--gap-carte)) / 6));
+    --larg-slot: min(calc(var(--altezza-utile) * 0.85 / 1.675),
+                     calc((50vw - 60px) / 3));
+  }
+
+  .barra button {
+    font-size: 18px !important;
+    padding: 12px 32px !important;
+  }
+
+  .area-lettura {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-top: 0;
+    height: var(--altezza-utile);
+    padding-top: 15px;
+  }
+
+  .slot-container {
+    width: auto;
+    margin-bottom: 0;
+    gap: 20px;
+  }
+
+  .slot {
+    width: var(--larg-slot);
+    height: calc(var(--larg-slot) * 1.675);
+    margin: 0;
+  }
+
+  .area-mazzo {
+    width: calc(6 * var(--larg-carta) + 5 * var(--gap-carte));
+    gap: var(--gap-carte);
+  }
+
+  .carta {
+    width: var(--larg-carta);
+    height: calc(var(--larg-carta) * 1.675);
+  }
+}

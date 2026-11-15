@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#111111">
+  <script src="/pwa.js" defer></script>
+  <script src="analytics.js"></script>
+  <script src="sintesi_dati.js?v=20261004"></script>
+  <script src="sintesi.js?v=20261004"></script>
+  <script src="cielo.js?v=20261109"></script>
+  <script src="momento_dati.js?v=20261109"></script>
+  <script src="motore_momento.js?v=20261109"></script>
+  <meta name="robots" content="noindex">
+  <title>Interpretazione dei Tarocchi</title>
+  <link rel="stylesheet" href="stile.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stile.css">
+
+  
+  
+  <style>
+    body {
+      background-color: #000;
+      color: #40E0D0;
+      font-family: 'Cinzel Decorative', 'Playfair Display', serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contenitore-interpretazione {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .titolo-fase {
+      color: #40E0D0;
+      font-size: 28px;
+      text-shadow: 0 0 10px #40E0D0;
+      margin-bottom: 30px;
+    }
+
+    .contenitore-visivo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .carta-immagine {
+      width: 240px;
+      height: 403px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #40E0D0;
+      transition: transform 0.8s;
+    }
+
+    video {
+      width: 600px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #40E0D0;
+    }
+
+    .testo-descrizione {
+      width: 800px;
+      text-align: justify;
+      line-height: 1.6;
+      font-size: 18px;
+      background-color: rgba(20, 20, 20, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #40E0D0;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+
+    .pulsanti-finali {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .bottone-avanti {
+      background-color: #40E0D0;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 25px;
+      color: #111;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #40E0D0;
+    }
+
+    .bottone-avanti:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #40E0D0;
+    }
+
+    /* ==========================================================
+       PC / schermi larghi: tutto in una schermata, senza scorrere.
+       Carta a sinistra, video + testo a destra. Il cellulare non cambia.
+       ========================================================== */
+    @media (min-width: 1000px) and (orientation: landscape) {
+      :root { --altezza-utile: calc(100vh - 170px); }
+
+      .contenitore-interpretazione {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        column-gap: 40px;
+        row-gap: 18px;
+        width: min(1400px, 94vw);
+        height: 100vh;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 18px 0 14px;
+      }
+      .contenitore-visivo { display: contents; }
+
+      .titolo-fase {
+        grid-column: 1 / -1;
+        margin: 0;
+        font-size: 26px;
+      }
+      .carta-immagine {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        height: var(--altezza-utile);
+        width: calc(var(--altezza-utile) / 1.68);
+        align-self: center;
+      }
+      video {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: center;
+        width: auto;
+        max-width: 100%;
+        height: calc(var(--altezza-utile) * 0.55);
+      }
+      .testo-descrizione {
+        grid-column: 2;
+        grid-row: 3;
+        width: auto;
+        margin: 0;
+        min-height: 0;
+        overflow-y: auto;
+        align-self: start;
+        max-height: 100%;
+        font-size: 17px;
+        line-height: 1.5;
+        box-sizing: border-box;
+      }
+      #pulsantiContainer {
+        grid-column: 1 / -1;
+        grid-row: 4;
+      }
+      .pulsanti-finali { margin-top: 0; }
+    }
+
+    /* ==== Sintesi finale ==== */
+    .modo-sintesi { display: block !important; height: auto !important; }
+    .modo-sintesi #imgCarta, .modo-sintesi #videoCarta, .modo-sintesi #descrizione { display: none !important; }
+    #sintesi { display: none; }
+    .modo-sintesi #sintesi { display: block; }
+    .sintesi-carte { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 6px 0 22px; }
+    .sintesi-carte figure { margin: 0; text-align: center; }
+    .sintesi-carte img {
+      width: 120px; height: auto; border-radius: 10px; box-shadow: 0 0 15px #40E0D0;
+    }
+    .sintesi-carte figcaption { font-size: 15px; margin-top: 8px; color: #40E0D0; }
+    .sintesi-testo {
+      max-width: 820px; margin: 0 auto; text-align: left; line-height: 1.6; font-size: 18px;
+      font-family: 'Playfair Display', serif; color: #d6efeb;
+      background-color: rgba(20, 20, 20, 0.8); padding: 20px 26px; border-radius: 15px; box-shadow: 0 0 15px #40E0D0;
+    }
+    .sintesi-testo p { margin: 0 0 12px; }
+    .sintesi-testo strong, .sintesi-testo em { color: #40E0D0; }
+    .modo-sintesi .pulsanti-finali { margin-top: 28px !important; }
+    @media (min-width: 1000px) and (orientation: landscape) {
+      .modo-sintesi { padding-top: 10px !important; }
+      .modo-sintesi .titolo-fase { margin-bottom: 8px !important; }
+      .modo-sintesi .sintesi-carte img { width: min(95px, 11vh); }
+      .modo-sintesi .sintesi-carte { margin-bottom: 14px; }
+      .modo-sintesi .sintesi-testo { font-size: 17px; line-height: 1.5; padding: 16px 24px; }
+      .modo-sintesi .sintesi-testo p { margin-bottom: 8px; }
+      .modo-sintesi .pulsanti-finali { margin-top: 18px !important; }
+    }
+    .sintesi-nota { font-size: 14px; opacity: .7; font-style: italic; margin-top: 14px !important; }
+    .sintesi-momento { border-top: 1px solid rgba(64, 224, 208, .35); margin-top: 18px; padding-top: 14px; }
+    .sintesi-momento h3 { font-size: 19px; margin: 0 0 4px; color: #40E0D0; font-weight: normal; }
+    .sintesi-scheda { font-size: 14px; opacity: .75; margin: 0 0 12px !important; }
+  </style>
+</head>
+<body>
+
+  <div class="contenitore-interpretazione">
+    <h1 class="titolo-fase" id="titolo-fase">Passato</h1>
+
+    <!-- Carta + Video sulla stessa riga -->
+    <div class="contenitore-visivo">
+      <img id="imgCarta" class="carta-immagine" src="">
+      <video id="videoCarta" controls></video>
+    </div>
+
+    <div id="descrizione" class="testo-descrizione"></div>
+
+    <!-- Sintesi finale delle tre carte -->
+    <section id="sintesi"></section>
+
+    <!-- Contenitore pulsanti -->
+    <div id="pulsantiContainer">
+      <button class="bottone-avanti" id="btnAvanti" onclick="avanti()">Avanti</button>
+    </div>
+  </div>
+
+  <script>
+    let lettura = JSON.parse(sessionStorage.getItem("lettura"));
+    if (!lettura) {
+      alert("Nessuna lettura trovata. Torna alla pagina principale.");
+      window.location.href = "master.html";
+    }
+
+    const fasi = ["passato", "presente", "futuro"];
+    let faseCorrente = 0;
+
+    function mostraCarta() {
+      const fase = fasi[faseCorrente];
+      const carta = lettura[fase];
+      const titolo = fase.charAt(0).toUpperCase() + fase.slice(1);
+
+      document.getElementById("titolo-fase").innerText = titolo;
+
+      // 📊 Analytics: fase della lettura visualizzata
+      traccia("fase_vista", {
+        fase: fase,
+        carta: carta.nome,
+        orientamento: carta.dritta ? "dritta" : "rovesciata"
+      });
+
+      const img = document.getElementById("imgCarta");
+      img.src = carta.img;
+      img.style.transform = carta.dritta ? "rotate(0deg)" : "rotate(180deg)";
+
+      let orientamento = carta.dritta ? "" : "_r";
+      let videoFile = `asset/video_it/${carta.nome}${orientamento}_${titolo}.mp4`;
+      let descrizioneFile = `asset/descrizione_it/${carta.nome}${orientamento}_${titolo}.md`;
+
+      // Correzione nomi tipo 01_01_il_mago -> 01_il_mago
+      videoFile = videoFile.replace(/^(\d{2})_\1_/, "$1_");
+      descrizioneFile = descrizioneFile.replace(/^(\d{2})_\1_/, "$1_");
+
+      const video = document.getElementById("videoCarta");
+      video.src = videoFile;
+
+      fetch(descrizioneFile)
+        .then(r => {
+          if (!r.ok) throw new Error("File non trovato");
+          return r.text();
+        })
+        .then(testo => document.getElementById("descrizione").innerText = testo)
+        .catch(() => {
+          document.getElementById("descrizione").innerText = "⚠️ File non trovato: " + descrizioneFile;
+          traccia("file_mancante", { tipo: "descrizione", file: descrizioneFile });
+        });
+
+      const btn = document.getElementById("btnAvanti");
+      if (btn) btn.innerText = faseCorrente < 2 ? "Avanti" : "✨ Sintesi";
+    }
+
+    function avanti() {
+      if (faseCorrente < 2) {
+        faseCorrente++;
+        mostraCarta();
+      } else {
+        mostraSintesi();
+      }
+    }
+
+    // ✨ SINTESI FINALE DELLE TRE CARTE
+    function mostraSintesi() {
+      const s = window.creaSintesi ? window.creaSintesi(lettura) : null;
+      if (s) {
+        const etichette = { passato: "Passato", presente: "Presente", futuro: "Futuro" };
+        const carte = fasi.map(f => {
+          const c = lettura[f];
+          return `<figure><img src="${c.img}" alt="" style="transform:rotate(${c.dritta ? 0 : 180}deg)"><figcaption>${etichette[f]}</figcaption></figure>`;
+        }).join("");
+        document.getElementById("sintesi").innerHTML =
+          `<div class="sintesi-carte">${carte}</div>` +
+          `<div class="sintesi-testo">${s.paragrafi.map(p => `<p>${p}</p>`).join("")}` +
+          htmlMomento() +
+          `<p class="sintesi-nota">I tarocchi e i riferimenti al cielo sono uno spunto di riflessione, non una previsione certa.</p></div>`;
+        document.getElementById("titolo-fase").innerText = s.titolo;
+        document.querySelector(".contenitore-interpretazione").classList.add("modo-sintesi");
+        const v = document.getElementById("videoCarta");
+        if (v) v.pause();
+        window.scrollTo(0, 0);
+        traccia("sintesi_vista");
+      }
+      mostraPulsantiFinali();
+    }
+
+    // 🌙 La lettura del momento: le carte collegate al cielo e all'ora di adesso
+    function htmlMomento() {
+      try {
+        if (!window.creaLetturaMomento) return "";
+        const m = window.creaLetturaMomento(lettura, new Date());
+        traccia("momento_vista", { fase_luna: m.cielo.fase, risonanze: m.risonanze.length });
+        return `<div class="sintesi-momento"><h3>🌙 Il cielo di questo momento</h3>` +
+               `<p class="sintesi-scheda">${m.scheda}</p>` +
+               m.paragrafi.map(p => `<p>${p}</p>`).join("") + `</div>`;
+      } catch (e) {
+        return ""; // se qualcosa va storto, la sintesi resta quella di sempre
+      }
+    }
+
+    function mostraPulsantiFinali() {
+      traccia("lettura_completata");
+      const container = document.getElementById("pulsantiContainer");
+      container.innerHTML = `
+        <div class="pulsanti-finali">
+          <button class="bottone-avanti" onclick="rileggi()">🔁 Rileggi</button>
+          <button class="bottone-avanti" onclick="generaPDF()">📜 Genera PDF</button>
+          <button class="bottone-avanti" onclick="fine()">🔚 Fine</button>
+        </div>
+      `;
+    }
+
+    // 🔁 RICOMINCIA LA LETTURA DAL PASSATO
+    function rileggi() {
+      traccia("rileggi_lettura");
+      document.querySelector(".contenitore-interpretazione").classList.remove("modo-sintesi");
+      faseCorrente = 0;
+      mostraCarta();
+      const container = document.getElementById("pulsantiContainer");
+      container.innerHTML = `<button class="bottone-avanti" id="btnAvanti" onclick="avanti()">Avanti</button>`;
+    }
+
+    // 📜 GENERA PDF
+    function generaPDF() {
+      traccia("pdf_richiesto");
+      window.location.href = "genera_pdf.html";
+    }
+
+    // 🔚 TORNA ALLA PAGINA PRINCIPALE
+    function fine() {
+      traccia("fine_lettura");
+      window.location.href = "master.html";
+    }
+
+    // 📊 Analytics: video avviati, completati o mancanti
+    let videoTracciato = "";
+    window.addEventListener("DOMContentLoaded", () => {
+      const v = document.getElementById("videoCarta");
+      v.addEventListener("play", () => {
+        const file = v.getAttribute("src");
+        if (file === videoTracciato) return; // conta un solo play per video
+        videoTracciato = file;
+        traccia("video_play", { fase: fasi[faseCorrente], video: file });
+      });
+      v.addEventListener("ended", () => {
+        traccia("video_completato", { fase: fasi[faseCorrente], video: v.getAttribute("src") });
+      });
+      v.addEventListener("error", () => {
+        traccia("file_mancante", { tipo: "video", file: v.getAttribute("src") });
+      });
+    });
+
+    window.addEventListener("DOMContentLoaded", mostraCarta);
+  </script>
+
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
+</body>
+</html>

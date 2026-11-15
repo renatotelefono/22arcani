@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.docx
+*.mp4
+*.osp
+youtube_grafica/
+.tmp.driveupload/
+strumenti/chiave_tts.txt
+*.chiave
+
+# Pesi del modello (90 MB): troppo grandi per GitHub/Cloudflare Pages
+kaggle/

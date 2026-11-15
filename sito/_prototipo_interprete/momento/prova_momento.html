@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prova – La lettura del momento</title>
+<style>
+  body { background:#000; color:#40E0D0; font-family:'Playfair Display', Georgia, serif; margin:0; padding:0 16px; }
+  main { max-width:820px; margin:30px auto; }
+  h1 { text-align:center; text-shadow:0 0 10px #40E0D0; font-size:28px; }
+  .pannello { background:rgba(20,20,20,.9); border:2px solid #40E0D0; border-radius:15px; padding:20px; box-shadow:0 0 25px rgba(64,224,208,.4); margin-bottom:20px; }
+  .riga { display:grid; grid-template-columns:80px 1fr 130px; gap:8px; align-items:center; margin:6px 0; }
+  select, input, button { font:inherit; font-size:16px; background:#111; color:#40E0D0; border:1px solid #40E0D0; border-radius:8px; padding:8px; box-sizing:border-box; width:100%; }
+  .pulsanti { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .pulsanti button { width:auto; flex:1 1 140px; cursor:pointer; }
+  .pulsanti .principale { background:#40E0D0; color:#000; font-weight:bold; }
+  .scheda { font-size:15px; color:#9ef; border-bottom:1px solid #40E0D0; padding-bottom:10px; margin-bottom:12px; }
+  #lettura p, #regole p { line-height:1.65; font-size:18px; }
+  .nota { font-size:14px; color:#7cc; font-style:italic; }
+  .tecnico { font-size:13px; color:#588; margin-top:10px; }
+  h2 { font-size:20px; margin-top:0; }
+  @media (max-width:520px) { .riga { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>La lettura del momento – prova</h1>
+
+  <div class="pannello">
+    <div id="scelte"></div>
+    <div class="riga"><span>Quando</span><input type="datetime-local" id="quando"><span></span></div>
+    <div class="pulsanti">
+      <button class="principale" id="leggi">Leggi</button>
+      <button id="ora">Adesso</button>
+      <button id="piu3">+3 ore</button>
+      <button id="piu1g">+1 giorno</button>
+      <button id="caso">Carte a caso</button>
+    </div>
+  </div>
+
+  <div class="pannello">
+    <div class="scheda" id="scheda"></div>
+    <h2>La lettura del momento</h2>
+    <div id="lettura"></div>
+    <p class="nota" id="avvertenza"></p>
+    <p class="tecnico" id="tecnico"></p>
+  </div>
+
+  <div class="pannello">
+    <h2>Per confronto: la sintesi a regole di oggi (sintesi.js)</h2>
+    <div id="regole"></div>
+  </div>
+</main>
+
+<script src="../../sintesi_dati.js"></script>
+<script src="../../sintesi.js"></script>
+<script src="cielo.js"></script>
+<script src="momento_dati.js"></script>
+<script src="motore_momento.js"></script>
+<script>
+(function () {
+  var ids = Object.keys(window.ZODIEL_ARCANI);
+  var pos = ["Passato", "Presente", "Futuro"], iniziali = ["00_il_matto", "07_il_carro", "17_la_stella"];
+  var scelte = document.getElementById("scelte");
+  pos.forEach(function (p, i) {
+    var r = document.createElement("div"); r.className = "riga";
+    r.innerHTML = "<span>" + p + "</span><select id='c" + i + "'>" +
+      ids.map(function (id) { return "<option value='" + id + "'" + (id === iniziali[i] ? " selected" : "") + ">" + window.ZODIEL_ARCANI[id].nome + "</option>"; }).join("") +
+      "</select><select id='v" + i + "'><option value='1'>dritta</option><option value='0'" + (i === 1 ? " selected" : "") + ">rovesciata</option></select>";
+    scelte.appendChild(r);
+  });
+  var quando = document.getElementById("quando");
+  function imposta(d) {
+    var z = function (n) { return (n < 10 ? "0" : "") + n; };
+    quando.value = d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "T" + z(d.getHours()) + ":" + z(d.getMinutes());
+  }
+  function lettura() {
+    var c = [0, 1, 2].map(function (i) { return { nome: document.getElementById("c" + i).value, dritta: document.getElementById("v" + i).value === "1" }; });
+    return { passato: c[0], presente: c[1], futuro: c[2] };
+  }
+  function leggi() {
+    var L = lettura(), d = new Date(quando.value);
+    var r = window.creaLetturaMomento(L, d);
+    document.getElementById("scheda").textContent = r.scheda;
+    document.getElementById("lettura").innerHTML = r.paragrafi.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+    document.getElementById("avvertenza").textContent = r.avvertenza;
+    document.getElementById("tecnico").textContent = "Carte in risonanza: " + (r.risonanze.length ? r.risonanze.join(", ") : "nessuna") +
+      (r.cielo.illuminazione !== undefined ? " · Luna illuminata al " + r.cielo.illuminazione + "%" : "");
+    var s = window.creaSintesi(L);
+    document.getElementById("regole").innerHTML = s ? s.paragrafi.map(function (p) { return "<p>" + p + "</p>"; }).join("") : "";
+  }
+  function sposta(ms) { imposta(new Date(new Date(quando.value).getTime() + ms)); leggi(); }
+  document.getElementById("leggi").onclick = leggi;
+  document.getElementById("ora").onclick = function () { imposta(new Date()); leggi(); };
+  document.getElementById("piu3").onclick = function () { sposta(3 * 3600000); };
+  document.getElementById("piu1g").onclick = function () { sposta(86400000); };
+  document.getElementById("caso").onclick = function () {
+    var m = ids.slice().sort(function () { return Math.random() - 0.5; });
+    [0, 1, 2].forEach(function (i) { document.getElementById("c" + i).value = m[i]; document.getElementById("v" + i).value = Math.random() < 0.5 ? "1" : "0"; });
+    leggi();
+  };
+  imposta(new Date()); leggi();
+})();
+</script>
+</body>
+</html>

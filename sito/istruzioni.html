@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#111111">
+  <script src="/pwa.js" defer></script>
+  <script src="analytics.js"></script>
+  <link rel="canonical" href="https://zodiel.cloud/istruzioni">
+  <title>Istruzioni per la Lettura dei Tarocchi – Come Funziona</title>
+<meta name="description" content="Scopri passo dopo passo come funziona la lettura dei tarocchi online. Guida semplice e veloce per principianti.">
+
+  <link rel="stylesheet" href="stile.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stile.css">
+
+  
+  
+  <style>
+    body {
+      background-color: #000;
+      color: #40E0D0;
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .istruzioni {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(20, 20, 20, 0.9);
+      border: 2px solid #40E0D0;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 25px #40E0D0;
+      text-align: left;
+      line-height: 1.4;
+      font-size: 22px;  /* testo più grande */
+      color: #40E0D0;
+    }
+
+    .istruzioni h2 {
+      color: #40E0D0;
+      text-align: center;
+      text-shadow: 0 0 12px #40E0D0;
+      margin-bottom: 25px;
+      font-size: 30px;
+    }
+
+    #testoIstruzioni p {
+      margin-bottom: 0.6em; /* meno spazio tra i paragrafi */
+    }
+
+    #testoIstruzioni ul {
+      margin-left: 25px;
+      list-style-type: "🔹 ";
+      color: #40E0D0;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 30px;
+      background-color: #40E0D0;
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 0 20px #40E0D0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #40E0D0;
+    }
+
+    /* Stile per la stampa */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      .istruzioni {
+        background: white;
+        color: black;
+        border: none;
+        box-shadow: none;
+        font-size: 14pt;
+      }
+      button {
+        display: none;
+      }
+    }
+
+.centrato {
+  text-align: center;
+  font-weight: bold;
+  color: #40E0D0;
+  text-shadow: 0 0 10px #40E0D0;
+  margin: 20px 0 10px;
+}
+
+
+
+
+/* ==========================================================
+   PC / schermi larghi: istruzioni in una sola schermata.
+   Il testo si adatta all'altezza della finestra. Il cellulare non cambia.
+   ========================================================== */
+@media (min-width: 1000px) and (orientation: landscape) {
+  .istruzioni {
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+    margin: 20px auto;
+    padding: 2.5vh 36px;
+    font-size: clamp(14px, 2.5vh, 22px);
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+  }
+  .istruzioni h2 {
+    font-size: clamp(20px, 3.4vh, 30px);
+    margin: 0 0 1.5vh;
+  }
+  #testoIstruzioni {
+    overflow-y: auto;      /* sicurezza: se la finestra è minuscola scorre solo il riquadro */
+    min-height: 0;
+  }
+  #testoIstruzioni p { margin: 0 0 0.5em; }
+  .centrato { margin: 1.2vh 0 0.6vh; }
+  .istruzioni button {
+    margin: 2vh auto 0;
+    flex-shrink: 0;
+    font-size: 18px !important;
+    padding: 10px 30px !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="istruzioni">
+    <h2>Istruzioni per la Lettura</h2>
+    <div id="testoIstruzioni">Caricamento...</div>
+    <button onclick="window.location.href='master.html'"> Torna indietro</button>
+  </div>
+
+<script>
+  fetch("asset/Istruzioni.txt")
+    .then(r => r.text())
+    .then(t => {
+      let testoHTML = t
+        .replace(/\*\*(.*?)\*\*/g, '<p class="centrato"><b>$1</b></p>')  // centrare e grassetto
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+      document.getElementById("testoIstruzioni").innerHTML = `<p>${testoHTML}</p>`;
+    })
+    .catch(() => {
+      document.getElementById("testoIstruzioni").innerText = "Impossibile caricare il file delle istruzioni.";
+    });
+</script>
+
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
+</body>
+</html>

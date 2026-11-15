@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#111111">
+  <script src="/pwa.js" defer></script>
+  <script src="analytics.js"></script>
+  <title>Tarocchi Gratis Online: lettura dei tarocchi gratuita e immediata | Zodiel</title>
+<meta name="description" content="Tarocchi gratis online: mescola il mazzo, scegli 3 carte e scopri cosa dicono del tuo passato, presente e futuro. Lettura gratuita e immediata, senza registrazione.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tarocchi Gratis Online: lettura dei tarocchi gratuita | Zodiel">
+<meta property="og:description" content="Scegli 3 carte e scopri il tuo passato, presente e futuro. Gratis e senza registrazione.">
+<meta property="og:url" content="https://zodiel.cloud/">
+<meta property="og:image" content="https://zodiel.cloud/asset/tarot_corona.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Zodiel – Tarocchi gratis online", "url": "https://zodiel.cloud/", "inLanguage": "it"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "La lettura dei tarocchi è davvero gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Su Zodiel la lettura dei tarocchi è completamente gratuita: non ci sono costi nascosti, abbonamenti o numeri a pagamento, e puoi ripeterla quando vuoi."}}, {"@type": "Question", "name": "Serve registrarsi per fare i tarocchi gratis?", "acceptedAnswer": {"@type": "Answer", "text": "No. Non chiediamo email né registrazione: apri il sito, mescoli il mazzo, scegli tre carte e leggi subito l'interpretazione."}}, {"@type": "Question", "name": "Che tarocchi usa Zodiel?", "acceptedAnswer": {"@type": "Answer", "text": "Zodiel usa i 22 Arcani Maggiori, le carte più importanti del mazzo. Ogni carta ha un significato diverso se esce dritta o rovesciata e a seconda che rappresenti il passato, il presente o il futuro: in tutto 132 interpretazioni."}}, {"@type": "Question", "name": "Cosa vuol dire una carta rovesciata?", "acceptedAnswer": {"@type": "Answer", "text": "Una carta rovesciata esprime l'energia della carta in modo bloccato, rallentato o eccessivo. Non è per forza negativa: spesso indica un aspetto su cui riflettere o da riequilibrare."}}, {"@type": "Question", "name": "Posso fare più letture dei tarocchi gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, puoi fare tutte le letture che vuoi. Il consiglio è di concentrarti su una domanda alla volta e di non ripetere la stessa domanda subito dopo."}}, {"@type": "Question", "name": "C'è una lettura dei tarocchi ogni giorno?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Ogni giorno nella pagina \"La lettura di oggi\" trovi tre nuove carte per passato, presente e futuro, con la spiegazione completa, la stessa del nostro video quotidiano su YouTube."}}]}</script>
+
+ <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stile.css">
+<link rel="canonical" href="https://zodiel.cloud/">
+<script src="sintesi_dati.js?v=20261004"></script>
+<script src="carta_giorno.js?v=20261004"></script>
+
+ 
+ 
+<style>
+  body {
+    margin: 0;
+    background-color: #111;
+    overflow-x: hidden;
+  }
+
+  /* Prima schermata: la ruota centrata */
+  .hero {
+    min-height: min(100vh, 860px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+  }
+
+  @media (max-height: 760px) and (min-width: 800px) {
+    .container { zoom: 0.85; }
+  }
+
+  .scopri {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #40E0D0;
+    opacity: .75;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    text-decoration: none;
+    animation: galleggia 2.4s ease-in-out infinite;
+  }
+  @keyframes galleggia {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+
+  /* Testo descrittivo sotto la ruota */
+  .descrizione-home {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    color: #cfeee9;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    text-align: left;
+  }
+  .descrizione-home h1,
+  .descrizione-home h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #40E0D0;
+    text-shadow: 0 0 10px rgba(64, 224, 208, .6);
+    text-align: center;
+  }
+  .descrizione-home h1 { font-size: 30px; margin: 0 0 20px; }
+  .descrizione-home h2 { font-size: 22px; margin: 36px 0 12px; }
+  .descrizione-home h3 { font-size: 18px; margin: 22px 0 6px; color: #40E0D0; font-family: 'Playfair Display', serif; }
+  .descrizione-home ol { padding-left: 24px; }
+  .descrizione-home li { margin-bottom: 8px; }
+  .descrizione-home strong { color: #40E0D0; }
+  .descrizione-home .nota { font-size: 16px; opacity: .8; font-style: italic; }
+  .descrizione-home .cta-box { text-align: center; margin-top: 36px; }
+  .descrizione-home .cta {
+    display: inline-block;
+    background-color: #40E0D0;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #40E0D0;
+    text-decoration: none;
+  }
+
+  .rotating-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: rotate 30s linear infinite reverse;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .center-hole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 402px;
+    height: 402px;
+    background-color: #111;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  /* 🔮 Pulsante Inizia con effetto luminoso e pulsante */
+  .button-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #40E0D0;
+    color: black;
+    border: none;
+    border-radius: 60px;
+    padding: 35px 80px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 2;
+    box-shadow: 0 0 25px #40E0D0;
+    animation: pulseGlow 2s infinite ease-in-out; /* ✨ effetto pulsazione */
+  }
+
+  .button-center:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 45px #40E0D0;
+  }
+
+  /* ✨ Animazione luce pulsante */
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px #40E0D0;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      box-shadow: 0 0 60px #40E0D0;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+  }
+.button-center {
+  font-size: 40px !important;
+  padding: 35px 80px !important;
+  border-radius: 60px !important;
+  z-index: 2 !important;
+}
+
+
+
+  /* ===== Carta del giorno al centro della ruota ===== */
+  .cdg-centro {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; cursor: pointer;
+    font-family: 'Cinzel Decorative', serif; color: #40E0D0; text-align: center;
+  }
+  .cdg-etichetta { font-size: 17px; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 0 0 8px rgba(64,224,208,.7); }
+  .cdg-nome { font-size: 19px; margin-top: 10px; text-shadow: 0 0 8px rgba(64,224,208,.7); max-width: 330px; line-height: 1.25; }
+  .cdg-tocca { font-family: 'Playfair Display', serif; font-size: 13px; opacity: .75; margin-top: 4px; }
+  .flip { width: 150px; height: 252px; perspective: 900px; }
+  .flip-interno { position: relative; width: 100%; height: 100%; transition: transform 1.1s ease; transform-style: preserve-3d; }
+  .flip.girata .flip-interno { transform: rotateY(180deg); }
+  .faccia { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 0 22px #40E0D0; }
+  .faccia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .faccia.fronte { transform: rotateY(180deg); }
+  .cdg-centro:hover .faccia { box-shadow: 0 0 34px #40E0D0; }
+  .inizia-sotto {
+    margin-top: 18px; background-color: #40E0D0; color: #000; border: none; border-radius: 40px;
+    padding: 14px 54px; font-size: 26px; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px #40E0D0;
+    animation: pulseGlow2 2s infinite ease-in-out;
+  }
+  @keyframes pulseGlow2 { 0%,100% { box-shadow: 0 0 15px #40E0D0; } 50% { box-shadow: 0 0 40px #40E0D0; } }
+  .hero .scopri { position: static; transform: none; margin-top: 12px; animation: none; }
+  .novita-cielo {
+    margin-top: 16px; padding: 8px 18px; border: 1px solid rgba(64,224,208,.6); border-radius: 30px;
+    color: #40E0D0; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 16px; text-align: center;
+    background: rgba(64,224,208,.08); max-width: calc(100% - 32px);
+  }
+  .novita-cielo:hover { background: rgba(64,224,208,.18); }
+  .novita-cielo span { opacity: .85; }
+
+  /* finestra con il messaggio */
+  .cdg-sfondo { position: fixed; inset: 0; background: rgba(0,0,0,.78); z-index: 50; display: none;
+                align-items: center; justify-content: center; padding: 16px; }
+  .cdg-sfondo.aperta { display: flex; }
+  .cdg-finestra {
+    position: relative; background: #0f0f0f; border: 1px solid #40E0D0; border-radius: 18px;
+    box-shadow: 0 0 30px rgba(64,224,208,.6); max-width: 760px; width: 100%; max-height: 92vh; overflow-y: auto;
+    padding: 26px 30px; color: #d6efeb; font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.6;
+    display: flex; gap: 26px; align-items: flex-start; text-align: left;
+  }
+  .cdg-finestra img { width: 190px; flex-shrink: 0; border-radius: 12px; box-shadow: 0 0 20px rgba(64,224,208,.7); }
+  .cdg-finestra h2 { font-family: 'Cinzel Decorative', serif; color: #40E0D0; margin: 0 0 4px; font-size: 26px; line-height: 1.25; }
+  .cdg-data { font-size: 14px; opacity: .7; margin: 0 0 12px; }
+  .cdg-parole { color: #40E0D0; font-style: italic; margin: 0 0 12px; }
+  .cdg-consiglio strong { color: #40E0D0; }
+  .cdg-chiudi { position: absolute; top: 8px; right: 14px; background: none; border: none; color: #40E0D0;
+                font-size: 30px; cursor: pointer; padding: 0 !important; box-shadow: none; }
+  .cdg-azioni { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .cdg-azioni a, .cdg-azioni button {
+    font-family: 'Playfair Display', serif; font-size: 15px !important; padding: 8px 16px !important; border-radius: 20px !important;
+    border: 1px solid #40E0D0; background: transparent; color: #40E0D0; text-decoration: none; cursor: pointer; box-shadow: none;
+  }
+  .cdg-azioni .primario { background: #40E0D0; color: #000; font-weight: bold; }
+  @media (max-width: 700px) {
+    .cdg-finestra { flex-direction: column; align-items: center; padding: 22px; }
+    .cdg-finestra img { width: 150px; }
+  }
+
+</style>
+
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <img src="asset/tarot_corona.jpg" alt="Ruota dei 22 Arcani Maggiori dei tarocchi" class="rotating-image">
+      <div class="center-hole"></div> <!-- Cerchio nero -->
+      <div class="cdg-centro" id="cdgCentro" onclick="apriCartaGiorno()" title="Leggi il messaggio della carta di oggi">
+        <div class="cdg-etichetta">La carta di oggi</div>
+        <div class="flip" id="cdgFlip">
+          <div class="flip-interno">
+            <div class="faccia"><img src="asset/dorso.jpeg" alt=""></div>
+            <div class="faccia fronte"><img id="cdgImg" src="" alt=""></div>
+          </div>
+        </div>
+        <div class="cdg-nome" id="cdgNome">&nbsp;</div>
+        <div class="cdg-tocca">tocca la carta per il messaggio</div>
+      </div>
+    </div>
+    <button class="inizia-sotto" onclick="traccia('inizia_lettura'); window.location.href='master.html'">Inizia la lettura</button>
+    <a class="novita-cielo" href="/cielo/" onclick="traccia('novita_cielo')">🌙 <strong>Novità</strong>: la tua lettura ora dialoga con il cielo<span id="novitaOggi"></span></a>
+    <a href="#come-funziona" class="scopri">&#8595; Scopri come funziona</a>
+  </section>
+
+  <main class="descrizione-home" id="come-funziona">
+    <h1>Tarocchi Gratis Online: la tua lettura dei tarocchi gratuita</h1>
+    <p>Con Zodiel fai i <strong>tarocchi gratis online</strong> in pochi minuti: mescoli il mazzo, scegli tre carte e scopri subito cosa dicono del tuo <strong>passato</strong>, del tuo <strong>presente</strong> e del tuo <strong>futuro</strong>. Usiamo i <strong>22 Arcani Maggiori</strong>, le carte più importanti dei tarocchi, con il metodo della stesa a tre carte, uno dei più semplici e conosciuti. Non serve registrarsi e non ci sono costi: basta una domanda nel cuore.</p>
+
+    <h2>Come funziona la lettura dei tarocchi gratis</h2>
+    <ol>
+      <li><strong>Mescola</strong> il mazzo dei 22 Arcani Maggiori, concentrandoti sulla tua domanda.</li>
+      <li><strong>Scegli tre carte</strong> coperte: la prima rappresenta il <strong>Passato</strong>, la seconda il <strong>Presente</strong>, la terza il <strong>Futuro</strong>.</li>
+      <li><strong>Scopri l'interpretazione</strong>: per ogni carta, dritta o rovesciata, trovi la spiegazione in video e in testo, e alla fine una <strong>sintesi</strong> che unisce le tre carte.</li>
+    </ol>
+    <p>In tutto ci sono <strong>132 interpretazioni diverse</strong>: ogni Arcano cambia significato a seconda della posizione e del verso in cui esce. Per questo ogni lettura è unica.</p>
+
+    <h2>Perché i tarocchi di Zodiel sono gratis</h2>
+    <p>Zodiel nasce per rendere i tarocchi accessibili a tutti, senza cartomanti a pagamento, numeri telefonici o abbonamenti. La lettura è <strong>completamente gratuita</strong> e puoi ripeterla quando vuoi. Alla fine puoi anche <strong>scaricare la tua interpretazione in PDF</strong>, per conservarla o rileggerla con calma.</p>
+    <p class="nota">I tarocchi sono uno strumento di riflessione personale: usali come spunto per guardarti dentro, non come una previsione certa.</p>
+
+    <h2>La lettura dei tarocchi di oggi</h2>
+    <p>Ogni giorno estraiamo tre nuove carte per tutti: scopri <a href="/oggi/">la lettura dei tarocchi di oggi</a>, con la spiegazione completa di ogni carta e la sintesi. È la stessa lettura del nostro video quotidiano su YouTube.</p>
+
+    <h2>Il cielo di oggi e i tarocchi</h2>
+    <p>Alla fine di ogni lettura, la sintesi si collega al <strong>cielo del momento</strong>: la fase della Luna, il segno in cui si trovano Luna e Sole, i pianeti retrogradi e l'ora del giorno. Ogni segno e ogni pianeta è legato a un Arcano Maggiore: guarda <a href="/cielo/">il cielo di oggi e le carte in risonanza</a>, il <a href="/calendario-lunare-2027/">calendario lunare 2027</a>, le date di <a href="/mercurio-retrogrado-2027/">Mercurio retrogrado</a> e <a href="/segni/">la carta del tuo segno zodiacale</a>.</p>
+
+    <h2>Tarocchi sì o no</h2>
+    <p>Hai una domanda precisa? Con i <a href="/si-o-no/">tarocchi sì o no</a> peschi una sola carta e scopri subito se la risposta è sì, no o forse.</p>
+
+    <h2>Il significato degli Arcani Maggiori</h2>
+    <p>Vuoi approfondire una carta? Leggi il <a href="/arcani/">significato dei 22 Arcani Maggiori</a>, dritti e rovesciati, nel passato, nel presente e nel futuro: dal Matto al Mondo, passando per la Torre, la Morte, gli Amanti e il Sole.</p>
+
+    <h2>Domande frequenti sui tarocchi gratis</h2>
+    <h3>La lettura dei tarocchi è davvero gratis?</h3>
+    <p>Sì. Su Zodiel la lettura dei tarocchi è completamente gratuita: non ci sono costi nascosti, abbonamenti o numeri a pagamento, e puoi ripeterla quando vuoi.</p>
+    <h3>Serve registrarsi per fare i tarocchi gratis?</h3>
+    <p>No. Non chiediamo email né registrazione: apri il sito, mescoli il mazzo, scegli tre carte e leggi subito l'interpretazione.</p>
+    <h3>Che tarocchi usa Zodiel?</h3>
+    <p>Zodiel usa i 22 Arcani Maggiori, le carte più importanti del mazzo. Ogni carta ha un significato diverso se esce dritta o rovesciata e a seconda che rappresenti il passato, il presente o il futuro: in tutto 132 interpretazioni.</p>
+    <h3>Cosa vuol dire una carta rovesciata?</h3>
+    <p>Una carta rovesciata esprime l'energia della carta in modo bloccato, rallentato o eccessivo. Non è per forza negativa: spesso indica un aspetto su cui riflettere o da riequilibrare.</p>
+    <h3>Posso fare più letture dei tarocchi gratis?</h3>
+    <p>Sì, puoi fare tutte le letture che vuoi. Il consiglio è di concentrarti su una domanda alla volta e di non ripetere la stessa domanda subito dopo.</p>
+    <h3>C'è una lettura dei tarocchi ogni giorno?</h3>
+    <p>Sì. Ogni giorno nella pagina "La lettura di oggi" trovi tre nuove carte per passato, presente e futuro, con la spiegazione completa, la stessa del nostro video quotidiano su YouTube.</p>
+
+    <div class="cta-box"><a class="cta" href="master.html" onclick="traccia('inizia_lettura')">Inizia la tua lettura gratis</a></div>
+  </main>
+  <a href="privacy.html" style="position:fixed;right:12px;bottom:8px;font-size:13px;color:#40E0D0;opacity:.7;z-index:5;font-family:'Playfair Display',serif">Privacy e cookie</a>
+  <!-- Finestra della carta del giorno -->
+  <div class="cdg-sfondo" id="cdgSfondo" onclick="if (event.target === this) chiudiCartaGiorno()">
+    <div class="cdg-finestra" role="dialog" aria-label="Carta del giorno">
+      <button class="cdg-chiudi" onclick="chiudiCartaGiorno()" aria-label="Chiudi">&times;</button>
+      <img id="cdgImgGrande" src="" alt="">
+      <div>
+        <h2 id="cdgTitolo"></h2>
+        <p class="cdg-data" id="cdgData"></p>
+        <p class="cdg-parole" id="cdgParole"></p>
+        <p id="cdgMessaggio"></p>
+        <p class="cdg-consiglio"><strong>Il consiglio di oggi:</strong> <span id="cdgConsiglio"></span>.</p>
+        <div class="cdg-azioni">
+          <a class="primario" href="master.html" onclick="traccia('inizia_lettura')">Fai la lettura completa</a>
+          <a id="cdgArcano" href="#">Significato della carta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ?data=AAAA-MM-GG mostra la carta di un altro giorno (utile per preparare i video)
+    const dataProva = new URLSearchParams(location.search).get("data");
+    const cdg = window.cartaDelGiorno(dataProva || undefined);
+    if (cdg) {
+      const img = document.getElementById("cdgImg");
+      img.src = cdg.img;
+      img.alt = cdg.nomeCompleto;
+      img.style.transform = cdg.dritta ? "" : "rotate(180deg)";
+      document.getElementById("cdgNome").textContent = cdg.nomeCompleto;
+      const gira = () => setTimeout(() => document.getElementById("cdgFlip").classList.add("girata"), 700);
+      if (img.complete) gira(); else img.onload = gira;
+
+      const g = document.getElementById("cdgImgGrande");
+      g.src = cdg.img; g.alt = cdg.nomeCompleto;
+      g.style.transform = cdg.dritta ? "" : "rotate(180deg)";
+      document.getElementById("cdgTitolo").textContent = cdg.nomeCompleto;
+      document.getElementById("cdgData").textContent = "La carta del giorno · " + cdg.dataLeggibile.charAt(0).toUpperCase() + cdg.dataLeggibile.slice(1);
+      document.getElementById("cdgParole").textContent = cdg.parole.join(" · ");
+      document.getElementById("cdgMessaggio").textContent = cdg.messaggio;
+      document.getElementById("cdgConsiglio").textContent = cdg.consiglio;
+      document.getElementById("cdgArcano").href = cdg.paginaArcano;
+    }
+    function apriCartaGiorno() {
+      document.getElementById("cdgSfondo").classList.add("aperta");
+      if (cdg) traccia("carta_giorno_vista", { carta: cdg.id, orientamento: cdg.dritta ? "dritta" : "rovesciata" });
+    }
+    function chiudiCartaGiorno() { document.getElementById("cdgSfondo").classList.remove("aperta"); }
+    document.addEventListener("keydown", e => { if (e.key === "Escape") chiudiCartaGiorno(); });
+  </script>
+  <script src="cielo.js?v=20261109"></script>
+  <script src="momento_dati.js?v=20261109"></script>
+  <script src="motore_momento.js?v=20261109"></script>
+  <script>
+    // Riquadro "Novità": il cielo di oggi (fase e segno della Luna, Mercurio retrogrado)
+    try {
+      const c = window.zodielCielo(new Date()), D = window.ZODIEL_MOMENTO;
+      if (c.disponibile) {
+        const fase = D.fasiNomi[c.fase].charAt(0).toUpperCase() + D.fasiNomi[c.fase].slice(1);
+        document.getElementById("novitaOggi").textContent = " · Oggi: " + fase + " in " + D.segni[c.segnoLuna] +
+          (c.retrogradi.indexOf("mercurio") >= 0 ? ", Mercurio retrogrado" : "");
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>
