@@ -204,6 +204,9 @@
       .modo-sintesi .pulsanti-finali { margin-top: 18px !important; }
     }
     .sintesi-nota { font-size: 14px; opacity: .7; font-style: italic; margin-top: 14px !important; }
+    .sintesi-attesa { opacity: .8; font-style: italic; animation: respiro 1.6s ease-in-out infinite; }
+    @keyframes respiro { 0%, 100% { opacity: .45; } 50% { opacity: .9; } }
+    @media (prefers-reduced-motion: reduce) { .sintesi-attesa { animation: none; } }
     .sintesi-momento { border-top: 1px solid rgba(64, 224, 208, .35); margin-top: 18px; padding-top: 14px; }
     .sintesi-momento h3 { font-size: 19px; margin: 0 0 4px; color: #40E0D0; font-weight: normal; }
     .sintesi-scheda { font-size: 14px; opacity: .75; margin: 0 0 12px !important; }
@@ -305,7 +308,7 @@
         }).join("");
         document.getElementById("sintesi").innerHTML =
           `<div class="sintesi-carte">${carte}</div>` +
-          `<div class="sintesi-testo">${s.paragrafi.map(p => `<p>${p}</p>`).join("")}` +
+          `<div class="sintesi-testo"><div id="sintesiParagrafi"><p class="sintesi-attesa">✨ Le carte stanno parlando…</p></div>` +
           htmlMomento() +
           `<p class="sintesi-nota">I tarocchi e i riferimenti al cielo sono uno spunto di riflessione, non una previsione certa.</p></div>`;
         document.getElementById("titolo-fase").innerText = s.titolo;
@@ -314,8 +317,59 @@
         if (v) v.pause();
         window.scrollTo(0, 0);
         traccia("sintesi_vista");
+        scriviSintesiIA(s.paragrafi);
       }
       mostraPulsantiFinali();
+    }
+
+    // 🤖 SINTESI SCRITTA DAL MODELLO (Ollama sul PC Linux, via /api/lettura)
+    // Se il modello non risponde, resta la sintesi classica di creaSintesi().
+    let testoIA = null; // la stessa lettura non viene riscritta se si preme "Rileggi"
+
+    function testoInParagrafi(t) {
+      const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return esc.split(/\n+/).filter(r => r.trim()).map(r => `<p>${r.trim()}</p>`).join("");
+    }
+
+    async function scriviSintesiIA(paragrafiClassici) {
+      const box = document.getElementById("sintesiParagrafi");
+      const classica = () => {
+        box.innerHTML = paragrafiClassici.map(p => `<p>${p}</p>`).join("");
+      };
+      const notaIA = `<p class="sintesi-nota">Questa sintesi è scritta da un modello di intelligenza artificiale a partire dai significati tradizionali delle carte.</p>`;
+      if (testoIA) { box.innerHTML = testoInParagrafi(testoIA) + notaIA; return; }
+
+      const carta = f => ({ id: lettura[f].nome, dritta: !!lettura[f].dritta });
+      const ctrl = new AbortController();
+      const limite = setTimeout(() => ctrl.abort(), 25000); // 25 s per iniziare a rispondere
+      let testo = "";
+      try {
+        const r = await fetch("/api/lettura", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ passato: carta("passato"), presente: carta("presente"), futuro: carta("futuro") }),
+          signal: ctrl.signal
+        });
+        if (!r.ok || !r.body) throw new Error("risposta " + r.status);
+        const lettore = r.body.getReader();
+        const dec = new TextDecoder();
+        while (true) {
+          const { done, value } = await lettore.read();
+          if (done) break;
+          clearTimeout(limite);
+          testo += dec.decode(value, { stream: true });
+          if (testo.trim()) box.innerHTML = testoInParagrafi(testo);
+        }
+        if (testo.trim().length < 40) throw new Error("testo troppo corto");
+        testoIA = testo;
+        box.innerHTML = testoInParagrafi(testo) + notaIA;
+        try { sessionStorage.setItem("sintesi_ia", testo); } catch (e) {}
+        traccia("sintesi_ia", { esito: "ok" });
+      } catch (e) {
+        clearTimeout(limite);
+        classica();
+        traccia("sintesi_ia", { esito: "classica" });
+      }
     }
 
     // 🌙 La lettura del momento: le carte collegate al cielo e all'ora di adesso

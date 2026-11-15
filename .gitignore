@@ -24,3 +24,8 @@ __pycache__/
 .venv/
 
 _to_delete/
+
+# Chiavi segrete: mai su GitHub
+tokencloudflaretunnel.txt
+*.chiave
+.dev.vars
