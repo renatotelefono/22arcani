@@ -41,7 +41,7 @@ SEG = [
  ("carta1", TESTI_CARTE[0], 0), ("carta2", TESTI_CARTE[1], 0), ("carta3", TESTI_CARTE[2], 0),
  ("tabella1", "Ecco ora le risposte di tutti i ventidue Arcani Maggiori, così potrai usarle anche con il tuo mazzo. " + " ".join(riga_voce(i) for i in IDS[:11]), 0),
  ("tabella2", "Continuiamo. " + " ".join(riga_voce(i) for i in IDS[11:]), 0),
- ("finale", "Vuoi fare la tua domanda con una carta tutta per te? Sul sito zodiel.cloud, nella pagina sì o no, scegli l'argomento: amore, lavoro, fortuna o benessere. Poi scegli la tua domanda e pesca la tua carta. È gratis. Se questo video ti è stato utile, iscriviti al canale: ogni giorno alle dodici c'è una nuova lettura dei tarocchi. Ricorda che i tarocchi sono uno spunto di riflessione, non una previsione certa. A presto!", 0)]
+ ("finale", "Vuoi fare la tua domanda con una carta tutta per te? Sul sito 22arcani.it, nella pagina sì o no, scegli l'argomento: amore, lavoro, fortuna o benessere. Poi scegli la tua domanda e pesca la tua carta. È gratis. Se questo video ti è stato utile, iscriviti al canale: ogni giorno alle dodici c'è una nuova lettura dei tarocchi. Ricorda che i tarocchi sono uno spunto di riflessione, non una previsione certa. A presto!", 0)]
 
 # ---------------- grafica ----------------
 def sfondo(piede=True):
@@ -144,7 +144,7 @@ subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "
 # capitoli
 t, cap = 0.0, []
 NOMI = {"intro": "Introduzione: come funziona", "scelta": "Scegli una carta: 1, 2 o 3", "carta1": "Carta 1", "carta2": "Carta 2", "carta3": "Carta 3",
-        "tabella1": "Le risposte sì o no dei 22 Arcani (1ª parte)", "tabella2": "Le risposte sì o no dei 22 Arcani (2ª parte)", "finale": "Fai la tua domanda su zodiel.cloud"}
+        "tabella1": "Le risposte sì o no dei 22 Arcani (1ª parte)", "tabella2": "Le risposte sì o no dei 22 Arcani (2ª parte)", "finale": "Fai la tua domanda su 22arcani.it"}
 for p, (nome, _, _) in zip(pezzi, SEG):
     cap.append("%d:%02d %s" % (int(t) // 60, int(t) % 60, NOMI[nome])); t += dur(p)
 open(os.path.join(OUT, "capitoli_sino_01.txt"), "w", encoding="utf-8").write("\n".join(cap) + "\n")

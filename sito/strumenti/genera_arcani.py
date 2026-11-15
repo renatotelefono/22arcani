@@ -8,7 +8,7 @@ Le immagini leggere in asset/img_web/ si rigenerano con:  python strumenti/gener
 import html, json, os, re
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOM = "https://zodiel.cloud"
+DOM = "https://22arcani.it"
 
 ARCANI = [
  ("00_il_matto","Il Matto","0","libertà, nuovi inizi, spontaneità, fiducia nella vita","imprudenza, distrazione, rischi inutili"),
@@ -261,7 +261,7 @@ def pagina(i):
     </section>
   </main>
 
-  <footer class="piede"><a href="/">zodiel.cloud</a> · <a href="/arcani/">Arcani Maggiori</a> · <a href="/privacy">Privacy e cookie</a></footer>
+  <footer class="piede"><a href="/">22arcani.it</a> · <a href="/arcani/">Arcani Maggiori</a> · <a href="/privacy">Privacy e cookie</a></footer>
 </body>
 </html>
 """
@@ -362,7 +362,7 @@ def indice():
     </section>
   </main>
 
-  <footer class="piede"><a href="/">zodiel.cloud</a> · <a href="/privacy">Privacy e cookie</a></footer>
+  <footer class="piede"><a href="/">22arcani.it</a> · <a href="/privacy">Privacy e cookie</a></footer>
 </body>
 </html>
 """

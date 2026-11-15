@@ -10,7 +10,7 @@ binding = "AI"
 [vars]
 MODALITA_PROVA = "si"          # mostra la pagina di prova su "/". Metti "no" quando lo usi dal sito.
 MODELLO = "@cf/mistralai/mistral-small-3.1-24b-instruct"
-ORIGINI_CONSENTITE = "https://zodiel.cloud,https://www.zodiel.cloud"
+ORIGINI_CONSENTITE = "https://22arcani.it,https://www.22arcani.it"
 
 # Limite: massimo 5 letture al minuto per indirizzo IP
 [[ratelimits]]

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zodiel.cloud/sitemap.xml
+Sitemap: https://22arcani.it/sitemap.xml

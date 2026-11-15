@@ -115,7 +115,7 @@ def parla(testo, path):
         a = json.load(urllib.request.urlopen(req, timeout=90))["audioContent"]
         open(path, "wb").write(base64.b64decode(a))
     else:
-        t = testo.replace("zodiel.cloud", "Zodièl punto clàud")
+        t = testo.replace("22arcani.it", "Zodièl punto clàud")
         subprocess.run([PIPER, "-m", VOCE, "-f", path, "--sentence_silence", "0.25"], input=t.encode("utf-8"),
                        check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path]).decode())
@@ -145,7 +145,7 @@ def video(data):
         pos, nome, kw, frase = info[k]
         frasi.append("%s: %s. %s" % (pos.capitalize(), nome, frase))
     frasi.append("In sintesi. " + " ".join(par[1:4]))
-    frasi.append("Questa è la lettura di oggi. La spiegazione completa è su zodiel.cloud/oggi. E la tua? Scegli le tue tre carte, gratis: la sintesi segue il cielo del momento. Tocca il video collegato qui sotto.")
+    frasi.append("Questa è la lettura di oggi. La spiegazione completa è su 22arcani.it/oggi. E la tua? Scegli le tue tre carte, gratis: la sintesi segue il cielo del momento. Tocca il video collegato qui sotto.")
     wav = [os.path.join(tmpd, "v%d.wav" % i) for i in range(len(frasi))]
     dur = [parla(f, w) for f, w in zip(frasi, wav)]
     T_INT, T_DEAL = 3.0, max(2.0, dur[0] + 0.6 - 3.0)

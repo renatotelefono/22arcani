@@ -12,8 +12,8 @@ Da oggi la tua lettura dei tarocchi dialoga con il cielo.
 Alla fine della lettura, la sintesi si collega al momento in cui scegli le carte: la fase della Luna, il segno in cui si trovano Luna e Sole, i pianeti retrogradi e l'ora del giorno.
 Stesse carte, momento diverso: una lettura diversa.
 
-✨ Prova ora: zodiel.cloud
-🔭 Il cielo di oggi e le carte in risonanza: zodiel.cloud/cielo
+✨ Prova ora: 22arcani.it
+🔭 Il cielo di oggi e le carte in risonanza: 22arcani.it/cielo
 
 Sai qual è la carta dei tarocchi del tuo segno? Scrivi il tuo segno nei commenti 👇
 
@@ -21,15 +21,15 @@ Sai qual è la carta dei tarocchi del tuo segno? Scrivi il tuo segno nei comment
 
 ## 2. Commento fissato (sotto ogni video quotidiano, per qualche settimana)
 
-🌙 Novità: sul sito la sintesi della tua lettura ora segue il cielo del momento (Luna, segni, pianeti). Fai la tua lettura gratis → zodiel.cloud
+🌙 Novità: sul sito la sintesi della tua lettura ora segue il cielo del momento (Luna, segni, pianeti). Fai la tua lettura gratis → 22arcani.it
 
 ---
 
 ## 3. Righe da aggiungere alla descrizione dei video quotidiani
 
-🌙 Il cielo di oggi e le carte in risonanza: https://zodiel.cloud/cielo/
-📅 Calendario lunare 2027 con i tarocchi: https://zodiel.cloud/calendario-lunare-2027/
-♈ La carta dei tarocchi del tuo segno: https://zodiel.cloud/segni/
+🌙 Il cielo di oggi e le carte in risonanza: https://22arcani.it/cielo/
+📅 Calendario lunare 2027 con i tarocchi: https://22arcani.it/calendario-lunare-2027/
+♈ La carta dei tarocchi del tuo segno: https://22arcani.it/segni/
 
 ---
 
@@ -44,7 +44,7 @@ Oggi, alle 16 e 53, Mercurio torna diretto: finisce il periodo di Mercurio retro
 Nei tarocchi, Mercurio è il pianeta del Mago: la carta della parola, delle idee e dell'iniziativa.
 Dopo settimane di revisioni e malintesi, il Mago torna dritto: le parole e le idee riprendono forza.
 È il momento di comunicare ciò che desideri e di rimettere in moto ciò che era rimasto in sospeso.
-E la tua lettura? Su zodiel.cloud la sintesi si collega al cielo del momento.
+E la tua lettura? Su 22arcani.it la sintesi si collega al cielo del momento.
 
 **Testi a schermo:**
 - MERCURIO TORNA DIRETTO · 13 novembre, ore 16:53
@@ -54,8 +54,8 @@ E la tua lettura? Su zodiel.cloud la sintesi si collega al cielo del momento.
 
 **Descrizione:**
 Mercurio torna diretto il 13 novembre 2026 alle 16:53 (ora italiana). Nei tarocchi è il pianeta del Mago.
-Tutte le date di Mercurio retrogrado nel 2027: https://zodiel.cloud/mercurio-retrogrado-2027/
-Fai la tua lettura gratis: https://zodiel.cloud
+Tutte le date di Mercurio retrogrado nel 2027: https://22arcani.it/mercurio-retrogrado-2027/
+Fai la tua lettura gratis: https://22arcani.it
 I tarocchi e gli astri sono uno spunto di riflessione, non una previsione.
 #tarocchi #mercurioretrogrado #ilmago #astrologia #tarocchigratis
 
@@ -72,7 +72,7 @@ Oggi, alle 15 e 55, è Luna piena in Gemelli.
 Nei tarocchi, i Gemelli sono il segno degli Amanti: la carta delle scelte del cuore, degli incontri e del dialogo.
 La Luna piena illumina tutto: emozioni e verità vengono alla luce.
 Se c'è una scelta che rimandi, questa Luna ti invita ad ascoltare cosa desideri davvero.
-Fai la tua lettura del momento su zodiel.cloud.
+Fai la tua lettura del momento su 22arcani.it.
 
 **Testi a schermo:**
 - LUNA PIENA IN GEMELLI · 24 novembre, ore 15:55
@@ -82,7 +82,7 @@ Fai la tua lettura del momento su zodiel.cloud.
 
 **Descrizione:**
 Luna piena in Gemelli il 24 novembre 2026 alle 15:55 (ora italiana). Nei tarocchi i Gemelli sono il segno degli Amanti.
-Calendario lunare 2027 con i tarocchi: https://zodiel.cloud/calendario-lunare-2027/
+Calendario lunare 2027 con i tarocchi: https://22arcani.it/calendario-lunare-2027/
 #lunapiena #tarocchi #gemelli #gliamanti #luna
 
 ---
@@ -98,7 +98,7 @@ Stasera, alle 21 e 49, è il solstizio d'inverno: la notte più lunga dell'anno.
 Da domani la luce ricomincia a crescere.
 Nei tarocchi è il giorno della carta del Sole: energia, gioia e chiarezza.
 Lascia che la tua luce si veda, anche nel buio dell'inverno.
-La tua lettura del momento ti aspetta su zodiel.cloud.
+La tua lettura del momento ti aspetta su 22arcani.it.
 
 **Testi a schermo:**
 - SOLSTIZIO D'INVERNO · 21 dicembre, ore 21:49
@@ -108,7 +108,7 @@ La tua lettura del momento ti aspetta su zodiel.cloud.
 
 **Descrizione:**
 Solstizio d'inverno il 21 dicembre 2026 alle 21:49 (ora italiana). Nei tarocchi è il momento della carta del Sole.
-Il cielo di oggi e le carte in risonanza: https://zodiel.cloud/cielo/
+Il cielo di oggi e le carte in risonanza: https://22arcani.it/cielo/
 #solstizio #tarocchi #ilsole #inverno #luce
 
 ---

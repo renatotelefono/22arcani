@@ -19,7 +19,7 @@ BASE = os.environ.get("ZODIEL_SITO") or os.path.dirname(QUI)
 DEST = BASE
 if "--dest" in sys.argv:
     DEST = os.path.abspath(sys.argv[sys.argv.index("--dest") + 1])
-SITO = "https://zodiel.cloud"
+SITO = "https://22arcani.it"
 OGGI = dt.date.today()
 
 GIORNI = ["lunedì","martedì","mercoledì","giovedì","venerdì","sabato","domenica"]
@@ -144,7 +144,7 @@ def pagina(percorso, titolo, descrizione, h1, briciola, corpo, script="", faq=No
     <p class="avvertenza">I collegamenti tra tarocchi e astri seguono la tradizione simbolica: sono uno spunto di riflessione, non una previsione. Le date e le posizioni dei pianeti sono invece calcolate con precisione astronomica (ora italiana).</p>
   </main>
 
-  <footer class="piede"><a href="/">zodiel.cloud</a> · <a href="/cielo/">Il cielo di oggi</a> · <a href="/calendario-lunare-2027/">Calendario lunare 2027</a> · <a href="/mercurio-retrogrado-2027/">Mercurio retrogrado 2027</a> · <a href="/segni/">Arcani e segni</a> · <a href="/arcani/">Arcani Maggiori</a> · <a href="/privacy">Privacy e cookie</a></footer>
+  <footer class="piede"><a href="/">22arcani.it</a> · <a href="/cielo/">Il cielo di oggi</a> · <a href="/calendario-lunare-2027/">Calendario lunare 2027</a> · <a href="/mercurio-retrogrado-2027/">Mercurio retrogrado 2027</a> · <a href="/segni/">Arcani e segni</a> · <a href="/arcani/">Arcani Maggiori</a> · <a href="/privacy">Privacy e cookie</a></footer>
 {script}
 </body>
 </html>

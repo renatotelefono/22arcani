@@ -1,23 +1,23 @@
   <url>
-    <loc>https://zodiel.cloud/cielo/</loc>
+    <loc>https://22arcani.it/cielo/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zodiel.cloud/calendario-lunare-2027/</loc>
+    <loc>https://22arcani.it/calendario-lunare-2027/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zodiel.cloud/mercurio-retrogrado-2027/</loc>
+    <loc>https://22arcani.it/mercurio-retrogrado-2027/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zodiel.cloud/segni/</loc>
+    <loc>https://22arcani.it/segni/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -31,7 +31,7 @@ Questa cartella è esclusa da git: niente di quello che c'è qui va online finch
 3. **Tu provi in locale**: in PowerShell, nella cartella `zodiel_cloud`, `python -m http.server 8000`, poi apri
    http://localhost:8000/cielo/ , /segni/ , /calendario-lunare-2027/ , /mercurio-retrogrado-2027/ e la home.
 4. **Tu pubblichi** con i comandi che ti preparo (solo i file nuovi e modificati).
-5. **Google Search Console**: invii di nuovo `https://zodiel.cloud/sitemap.xml` (ti guido se serve).
+5. **Google Search Console**: invii di nuovo `https://22arcani.it/sitemap.xml` (ti guido se serve).
 6. **YouTube**: post della community, commento fissato, e lo Short di venerdì 13 (Mercurio torna diretto).
 7. **Video quotidiano**: il primo video generato con il nuovo script avrà il cielo del giorno nell'intro;
    controlla che la riga sotto la data non si sovrapponga a nulla.
