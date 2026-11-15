@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Zodiel – il cielo di un giorno, per i video quotidiani.
+22 Arcani – il cielo di un giorno, per i video quotidiani.
 Usa gli stessi dati del sito (cielo.js, momento_dati.js, motore_momento.js) tramite Node.
   import cielo_oggi as co
   c = co.cielo("2026-11-09")        -> dati del cielo alle 9:00 di quel giorno (ora italiana)

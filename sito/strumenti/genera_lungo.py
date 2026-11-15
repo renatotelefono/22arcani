@@ -1,4 +1,4 @@
-# Zodiel – video lungo "Scegli una carta" (16:9) con i video della lettrice.
+# 22 Arcani – video lungo "Scegli una carta" (16:9) con i video della lettrice.
 # Uso: python3 strumenti/genera_lungo.py <nome> <titolo_riga2> <codice1> <codice2> <codice3>
 # es.: python3 strumenti/genera_lungo.py futuro_01 "Cosa ti riserva il futuro?" 19_il_sole_Futuro 10_la_ruota_della_fortuna_Futuro 17_la_stella_Futuro
 import os, sys, re, subprocess, math
@@ -89,7 +89,7 @@ def cornice(path, i, cod):
     c = carta(num, 620, rov); alone(im, c, (1404 + (516 - c.width) // 2, 180), 36)
     cx(im, 830, nomec.upper(), g3.adatta(ImageDraw.Draw(im), nomec.upper(), "Cinzel[wght].ttf", 40, 480, 700), BIANCO, False, 1404, 516)
     cx(im, 885, sotto, F("Cinzel[wght].ttf", 32, 500), GRIGIO, False, 1404, 516)
-    cx(im, 932, "Lettura completa gratis:  ZODIEL.CLOUD", F("Cinzel[wght].ttf", 38, 700), TURCH)
+    cx(im, 932, "Lettura completa gratis:  22ARCANI.IT", F("Cinzel[wght].ttf", 38, 700), TURCH)
     im.save(path)
 
 def finale(path):
@@ -97,7 +97,7 @@ def finale(path):
     cx(im, 110, "E se le carte fossero le TUE?", F("Cinzel[wght].ttf", 76, 600), BIANCO)
     cx(im, 230, "Passato · Presente · Futuro: la tua lettura con 3 carte", F("Cinzel[wght].ttf", 48, 600), GRIGIO)
     cx(im, 380, "GRATIS SU", F("Cinzel[wght].ttf", 70, 700), BIANCO)
-    cx(im, 470, "ZODIEL.CLOUD", F("Cinzel[wght].ttf", 150, 600), TURCH, True)
+    cx(im, 470, "22ARCANI.IT", F("Cinzel[wght].ttf", 150, 600), TURCH, True)
     d = ImageDraw.Draw(im)
     d.rounded_rectangle([560, 720, 1360, 830], radius=40, fill=(16, 52, 50, 255), outline=TURCH, width=4)
     cx(im, 742, "Il link è nella descrizione", F("Cinzel[wght].ttf", 46, 700), BIANCO)

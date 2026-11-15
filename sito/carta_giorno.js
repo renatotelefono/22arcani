@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – Carta del giorno
+   22 Arcani – Carta del giorno
    Stessa carta per tutti nello stesso giorno (ora italiana).
    Le 44 combinazioni (22 carte x dritta/rovesciata) seguono un ordine
    mescolato fisso: nessuna ripetizione per 44 giorni.

@@ -1,4 +1,4 @@
-# Zodiel – pagina "La lettura di oggi" (22arcani.it/oggi).
+# 22 Arcani – pagina "La lettura di oggi" (22arcani.it/oggi).
 # Scrive oggi/calendario.js (carte di ogni giorno, stesso algoritmo del video) e oggi/index.html
 # (già compilata con la lettura del giorno di generazione, per Google; il JS la aggiorna al giorno corrente).
 # Uso: python3 strumenti/genera_oggi.py            (calendario da 7 giorni fa a +400 giorni)
@@ -48,11 +48,11 @@ pagina = f'''<!DOCTYPE html>
   <script src="/pwa.js" defer></script>
   <script src="/analytics.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>La lettura dei tarocchi di oggi: passato, presente e futuro | Zodiel</title>
+  <title>La lettura dei tarocchi di oggi: passato, presente e futuro | 22 Arcani</title>
   <meta name="description" content="Ogni giorno una nuova lettura dei tarocchi gratis: tre Arcani Maggiori per passato, presente e futuro, con il significato di ogni carta e la sintesi. Poi scegli le tue carte.">
   <link rel="canonical" href="https://22arcani.it/oggi/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="La lettura dei tarocchi di oggi | Zodiel">
+  <meta property="og:title" content="La lettura dei tarocchi di oggi | 22 Arcani">
   <meta property="og:description" content="Tre carte per passato, presente e futuro: la lettura del giorno, gratis.">
   <meta property="og:url" content="https://22arcani.it/oggi/">
   <meta property="og:image" content="https://22arcani.it/asset/img_it/{carte[1][0]}.jpeg">
@@ -72,11 +72,11 @@ pagina = f'''<!DOCTYPE html>
     .chiama .cta {{ font-size: 20px; }}
     @media (max-width: 600px) {{ .carta-oggi {{ flex-direction: column; align-items: center; }} .carta-oggi img {{ width: 130px; }} }}
   </style>
-  <script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebPage","name":"La lettura dei tarocchi di oggi","url":"https://22arcani.it/oggi/","description":"Ogni giorno tre Arcani Maggiori per passato, presente e futuro, con significato e sintesi.","isPartOf":{{"@type":"WebSite","name":"Zodiel","url":"https://22arcani.it/"}}}}</script>
+  <script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebPage","name":"La lettura dei tarocchi di oggi","url":"https://22arcani.it/oggi/","description":"Ogni giorno tre Arcani Maggiori per passato, presente e futuro, con significato e sintesi.","isPartOf":{{"@type":"WebSite","name":"22 Arcani","url":"https://22arcani.it/"}}}}</script>
 </head>
 <body>
   <header class="testata">
-    <a class="logo" href="/">Zodiel</a>
+    <a class="logo" href="/">22 Arcani</a>
     <nav><a href="/si-o-no/">Sì o no</a> <a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
   </header>
 
@@ -84,7 +84,7 @@ pagina = f'''<!DOCTYPE html>
     <p class="briciole"><a href="/">Home</a> &rsaquo; La lettura di oggi</p>
     <h1>La lettura dei tarocchi di oggi</h1>
     <p class="data" id="data">{data_txt}</p>
-    <p>Ogni giorno Zodiel estrae <strong>tre Arcani Maggiori</strong>: uno per il <strong>passato</strong>, uno per il <strong>presente</strong> e uno per il <strong>futuro</strong>. È la stessa lettura del video quotidiano sul nostro canale YouTube. Oggi sono uscite: <strong id="nomi">{html.escape(nomi)}</strong>.</p>
+    <p>Ogni giorno 22 Arcani estrae <strong>tre Arcani Maggiori</strong>: uno per il <strong>passato</strong>, uno per il <strong>presente</strong> e uno per il <strong>futuro</strong>. È la stessa lettura del video quotidiano sul nostro canale YouTube. Oggi sono uscite: <strong id="nomi">{html.escape(nomi)}</strong>.</p>
 
     <div id="carte">{"".join(blocchi)}</div>
 

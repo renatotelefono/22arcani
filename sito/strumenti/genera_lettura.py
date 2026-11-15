@@ -1,4 +1,4 @@
-# Zodiel – Short "La lettura di oggi": 3 carte (passato, presente, futuro) scelte da un algoritmo
+# 22 Arcani – Short "La lettura di oggi": 3 carte (passato, presente, futuro) scelte da un algoritmo
 # in base alla data, girate una alla volta, con parole chiave, una frase per carta e la sintesi
 # (la stessa del sito, da sintesi.js). Niente lettrice: carte, movimento, testo e musica.
 # Uso: python3 strumenti/genera_lettura.py 2026-11-01 [2026-11-02 ...]
@@ -67,7 +67,7 @@ def sfondo():
     g = Image.new("RGBA", (W, H), (0,0,0,0)); ImageDraw.Draw(g).ellipse([-250, 250, W+250, 1650], fill=(20, 70, 66, 255))
     im.alpha_composite(g.filter(ImageFilter.GaussianBlur(170)))
     d = ImageDraw.Draw(im); fz = CIN(44, 700)
-    w = d.textlength("ZODIEL.CLOUD", font=fz); d.text(((W-w)/2, 1800), "ZODIEL.CLOUD", font=fz, fill=TURCH)
+    w = d.textlength("22ARCANI.IT", font=fz); d.text(((W-w)/2, 1800), "22ARCANI.IT", font=fz, fill=TURCH)
     g3.stella(d, (W-w)/2-34, 1826, 15, TURCH); g3.stella(d, (W+w)/2+34, 1826, 15, TURCH)
     return im
 
@@ -201,7 +201,7 @@ def video(data):
         c(560, "Mescola il mazzo e scegli", CIN(50, 600), BIANCO)
         c(630, "le TUE 3 carte", CIN(50, 600), BIANCO)
         c(770, "SPIEGAZIONE COMPLETA SU", CIN(46, 700), BIANCO)
-        testo_centrato(im, 860, "ZODIEL.CLOUD/OGGI", CIN(84, 700), TURCH, 1040)
+        testo_centrato(im, 860, "22ARCANI.IT/OGGI", CIN(84, 700), TURCH, 1040)
         d = ImageDraw.Draw(im)
         d.rounded_rectangle([110, 1150, 970, 1340], radius=40, fill=(16, 52, 50, 255), outline=TURCH, width=5)
         c(1180, "Tocca il video collegato", CIN(50, 700), BIANCO); c(1255, "qui sotto", CIN(50, 700), BIANCO)

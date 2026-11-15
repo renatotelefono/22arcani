@@ -7,7 +7,7 @@ Date e orari sono calcolati (ora italiana) e coincidono con quelli delle pagine 
 
 ## 1. Post della community (il giorno della pubblicazione)
 
-🌙 Novità su Zodiel!
+🌙 Novità su 22 Arcani!
 Da oggi la tua lettura dei tarocchi dialoga con il cielo.
 Alla fine della lettura, la sintesi si collega al momento in cui scegli le carte: la fase della Luna, il segno in cui si trovano Luna e Sole, i pianeti retrogradi e l'ora del giorno.
 Stesse carte, momento diverso: una lettura diversa.
@@ -50,7 +50,7 @@ E la tua lettura? Su 22arcani.it la sintesi si collega al cielo del momento.
 - MERCURIO TORNA DIRETTO · 13 novembre, ore 16:53
 - La carta di Mercurio: IL MAGO
 - Parole e idee riprendono forza
-- La tua lettura del momento → ZODIEL.CLOUD
+- La tua lettura del momento → 22ARCANI.IT
 
 **Descrizione:**
 Mercurio torna diretto il 13 novembre 2026 alle 16:53 (ora italiana). Nei tarocchi è il pianeta del Mago.
@@ -78,7 +78,7 @@ Fai la tua lettura del momento su 22arcani.it.
 - LUNA PIENA IN GEMELLI · 24 novembre, ore 15:55
 - La carta dei Gemelli: GLI AMANTI
 - Ascolta cosa desideri davvero
-- ZODIEL.CLOUD
+- 22ARCANI.IT
 
 **Descrizione:**
 Luna piena in Gemelli il 24 novembre 2026 alle 15:55 (ora italiana). Nei tarocchi i Gemelli sono il segno degli Amanti.
@@ -104,7 +104,7 @@ La tua lettura del momento ti aspetta su 22arcani.it.
 - SOLSTIZIO D'INVERNO · 21 dicembre, ore 21:49
 - La notte più lunga: da qui la luce cresce
 - La carta: IL SOLE
-- ZODIEL.CLOUD
+- 22ARCANI.IT
 
 **Descrizione:**
 Solstizio d'inverno il 21 dicembre 2026 alle 21:49 (ora italiana). Nei tarocchi è il momento della carta del Sole.

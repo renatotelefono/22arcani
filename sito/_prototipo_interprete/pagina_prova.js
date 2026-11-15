@@ -1,7 +1,7 @@
 // Pagina di prova (solo per te, in locale). Non è la pagina del sito.
 export const PAGINA_PROVA = (carte, argomenti, modelli) => `<!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prova interprete Zodiel</title>
+<title>Prova interprete 22 Arcani</title>
 <style>
  body{background:#000;color:#40E0D0;font-family:Georgia,serif;max-width:760px;margin:0 auto;padding:16px}
  h1{text-shadow:0 0 10px #40E0D0;font-size:26px}
@@ -12,7 +12,7 @@ export const PAGINA_PROVA = (carte, argomenti, modelli) => `<!doctype html>
  #esito{white-space:pre-wrap;line-height:1.6;margin-top:20px;padding:16px;border:1px solid #40E0D0;border-radius:12px;min-height:60px}
  .info{color:#9ee;font-size:14px;margin-top:8px}
 </style></head><body>
-<h1>Prova interprete Zodiel</h1>
+<h1>Prova interprete 22 Arcani</h1>
 <p class="info">Pagina di test locale. Ciò che scrivi qui va solo al modello scelto e non viene salvato.</p>
 ${["Passato","Presente","Futuro"].map((p,i)=>`<div class="riga"><span>${p}</span>
  <select id="c${i}">${carte.map((c,j)=>`<option value="${c.id}" ${j===[0,7,17][i]?"selected":""}>${c.nome}</option>`).join("")}</select>

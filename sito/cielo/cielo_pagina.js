@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – pagina "Il cielo di oggi" (/cielo/)
+   22 Arcani – pagina "Il cielo di oggi" (/cielo/)
    Descrive il cielo del momento (Luna, Sole, pianeti retrogradi, prossimi eventi)
    e le carte dei tarocchi in risonanza. Usata dal browser e da
    strumenti/genera_cielo_pagine.py (per scrivere la versione statica per Google).

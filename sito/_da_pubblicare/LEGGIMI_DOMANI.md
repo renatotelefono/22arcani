@@ -28,7 +28,7 @@ Questa cartella è esclusa da git: niente di quello che c'è qui va online finch
 1. **Rivedi** (15 minuti): apri le pagine e i testi; dimmi se cambiare qualcosa.
 2. **Io copio tutto nel sito**: rigenero le pagine con la data di domani, aggiungo le righe alla sitemap
    e controllo che `index.html` non sia cambiato nel frattempo.
-3. **Tu provi in locale**: in PowerShell, nella cartella `zodiel_cloud`, `python -m http.server 8000`, poi apri
+3. **Tu provi in locale**: in PowerShell, nella cartella `22arcani/sito`, `python -m http.server 8000`, poi apri
    http://localhost:8000/cielo/ , /segni/ , /calendario-lunare-2027/ , /mercurio-retrogrado-2027/ e la home.
 4. **Tu pubblichi** con i comandi che ti preparo (solo i file nuovi e modificati).
 5. **Google Search Console**: invii di nuovo `https://22arcani.it/sitemap.xml` (ti guido se serve).

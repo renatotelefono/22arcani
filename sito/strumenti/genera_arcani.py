@@ -145,7 +145,7 @@ def pagina(i):
     prev_ = ARCANI[i-1] if i > 0 else None
     next_ = ARCANI[i+1] if i < len(ARCANI)-1 else None
     dr, rv = accorda(fid, "dritto"), accorda(fid, "rovesciato")
-    titolo = f"{nome} nei Tarocchi: significato {dr} e {rv} | Zodiel"
+    titolo = f"{nome} nei Tarocchi: significato {dr} e {rv} | 22 Arcani"
     desc = (f"Cosa {'significano' if fid in PLURALI else 'significa'} {nome} nei tarocchi? {dr.capitalize()}: {kw_d}. {rv.capitalize()}: {kw_r}. "
             f"Il significato nel passato, nel presente e nel futuro e la lettura gratuita online.")
     faq = [
@@ -175,7 +175,7 @@ def pagina(i):
     breadcrumb = {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Zodiel", "item": DOM + "/"},
+            {"@type": "ListItem", "position": 1, "name": "22 Arcani", "item": DOM + "/"},
             {"@type": "ListItem", "position": 2, "name": "Arcani Maggiori", "item": DOM + "/arcani/"},
             {"@type": "ListItem", "position": 3, "name": nome, "item": url},
         ]}
@@ -213,7 +213,7 @@ def pagina(i):
 </head>
 <body>
   <header class="testata">
-    <a class="logo" href="/">Zodiel</a>
+    <a class="logo" href="/">22 Arcani</a>
     <nav><a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
   </header>
 
@@ -275,7 +275,7 @@ def indice():
         f'        <tr><td>{num}</td><td><a href="/arcani/{slug(fid)}">{nome}</a></td><td>{kw_d}</td><td>{kw_r}</td></tr>'
         for fid, nome, num, kw_d, kw_r in ARCANI)
     nomi = ", ".join(f"{nome} ({num})" for _, nome, num, _, _ in ARCANI)
-    titolo = "I 22 Arcani Maggiori dei Tarocchi: significato di tutte le carte | Zodiel"
+    titolo = "I 22 Arcani Maggiori dei Tarocchi: significato di tutte le carte | 22 Arcani"
     desc = ("I 22 Arcani Maggiori dei tarocchi, dal Matto al Mondo: elenco completo e significato di ogni carta, "
             "dritta e rovesciata, nel passato, nel presente e nel futuro. Lettura gratuita online.")
     faq = [
@@ -286,7 +286,7 @@ def indice():
         ("Cosa significa una carta dei tarocchi rovesciata?",
          "Una carta rovesciata esce capovolta. Di solito indica che l'energia della carta è bloccata, rallentata o vissuta in modo eccessivo: per esempio la Torre rovesciata parla di un cambiamento rimandato, la Morte rovesciata della paura di lasciar andare."),
         ("Come si fa una lettura con gli Arcani Maggiori?",
-         "La stesa più semplice usa tre carte: la prima per il passato, la seconda per il presente, la terza per il futuro. Su Zodiel puoi mescolare il mazzo, scegliere le tue tre carte e leggere l'interpretazione completa gratis."),
+         "La stesa più semplice usa tre carte: la prima per il passato, la seconda per il presente, la terza per il futuro. Su 22 Arcani puoi mescolare il mazzo, scegliere le tue tre carte e leggere l'interpretazione completa gratis."),
     ]
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q,
@@ -321,7 +321,7 @@ def indice():
 </head>
 <body>
   <header class="testata">
-    <a class="logo" href="/">Zodiel</a>
+    <a class="logo" href="/">22 Arcani</a>
     <nav><a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
   </header>
 
@@ -347,7 +347,7 @@ def indice():
 
     <section>
       <h2>Arcani Maggiori dritti e rovesciati</h2>
-      <p>Ogni Arcano Maggiore può uscire <strong>dritto</strong> o <strong>rovesciato</strong>. Da dritta, la carta esprime la sua energia in modo pieno e diretto; da rovesciata, quella stessa energia è bloccata, rimandata oppure vissuta in eccesso. Per questo su Zodiel trovi per ogni carta sei interpretazioni: dritta e rovesciata, nel passato, nel presente e nel futuro.</p>
+      <p>Ogni Arcano Maggiore può uscire <strong>dritto</strong> o <strong>rovesciato</strong>. Da dritta, la carta esprime la sua energia in modo pieno e diretto; da rovesciata, quella stessa energia è bloccata, rimandata oppure vissuta in eccesso. Per questo su 22 Arcani trovi per ogni carta sei interpretazioni: dritta e rovesciata, nel passato, nel presente e nel futuro.</p>
     </section>
 
     <section class="faq">

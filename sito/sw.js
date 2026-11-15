@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – Service worker (PWA)
+   22 Arcani – Service worker (PWA)
    Le pagine vengono SEMPRE prese dal sito (nessun contenuto vecchio).
    Se manca la connessione, mostra offline.html.
    I video e le immagini non vengono salvati sul telefono.

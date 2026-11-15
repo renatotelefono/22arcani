@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – Google Analytics 4 + consenso cookie (GDPR)
+   22 Arcani – Google Analytics 4 + consenso cookie (GDPR)
    GA viene caricato SOLO dopo che il visitatore clicca "Accetta".
    ========================================================== */
 (function () {

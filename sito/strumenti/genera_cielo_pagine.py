@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Zodiel – pagine del cielo per Google e per gli utenti:
+22 Arcani – pagine del cielo per Google e per gli utenti:
   /cielo/                       il cielo di oggi e le carte in risonanza (aggiornato dal browser)
   /calendario-lunare-2027/      lune nuove, piene e quarti del 2027 con la carta del segno
   /mercurio-retrogrado-2027/    date di Mercurio (e degli altri pianeti) retrogradi, con il Mago
   /segni/                       l'Arcano di ogni segno zodiacale
 
-Uso (dalla cartella zodiel_cloud):  python strumenti/genera_cielo_pagine.py
+Uso (dalla cartella 22arcani/sito):  python strumenti/genera_cielo_pagine.py
 Serve prima cielo.js (python strumenti/genera_cielo.py 2026 2027). Richiede Node (già usato dagli altri script).
 Opzione:  --dest CARTELLA   scrive le pagine in un'altra cartella (per provarle senza toccare il sito)
 """
@@ -93,7 +93,7 @@ STILE = """
 def pagina(percorso, titolo, descrizione, h1, briciola, corpo, script="", faq=None, immagine="18_la_luna"):
     url = SITO + percorso
     ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Zodiel", "item": SITO + "/"},
+        {"@type": "ListItem", "position": 1, "name": "22 Arcani", "item": SITO + "/"},
         {"@type": "ListItem", "position": 2, "name": briciola, "item": url}]}]
     if faq:
         ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -127,7 +127,7 @@ def pagina(percorso, titolo, descrizione, h1, briciola, corpo, script="", faq=No
 </head>
 <body>
   <header class="testata">
-    <a class="logo" href="/">Zodiel</a>
+    <a class="logo" href="/">22 Arcani</a>
     <nav><a href="/cielo/">Il cielo di oggi</a> <a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
   </header>
 
@@ -180,7 +180,7 @@ script = SCRIPT_CIELO + """  <script src="/cielo/cielo_pagina.js"></script>
     } catch (e) {}
   })();
   </script>"""
-scrivi("/cielo/", pagina("/cielo/", "Il cielo di oggi e i tarocchi: Luna, segni e pianeti retrogradi | Zodiel",
+scrivi("/cielo/", pagina("/cielo/", "Il cielo di oggi e i tarocchi: Luna, segni e pianeti retrogradi | 22 Arcani",
     "La fase della Luna di oggi, il segno di Luna e Sole, i pianeti retrogradi e le carte dei tarocchi in risonanza con il cielo. Aggiornato ogni giorno.",
     "Il cielo di oggi e i tarocchi", "Il cielo di oggi", corpo, script, immagine="17_la_stella"))
 
@@ -213,7 +213,7 @@ faq = [
     ("Che carta dei tarocchi è legata alla Luna?", "Nella tradizione dei tarocchi la Luna come astro è legata alla Papessa, carta dell'intuizione e del mondo interiore. L'arcano chiamato La Luna è invece legato al segno dei Pesci."),
     ("Gli orari del calendario lunare sono in ora italiana?", "Sì: tutti gli orari sono in ora italiana e tengono conto dell'ora legale. Le fasi sono calcolate astronomicamente al minuto."),
 ]
-scrivi("/calendario-lunare-2027/", pagina("/calendario-lunare-2027/", "Calendario lunare 2027: lune piene, lune nuove e tarocchi | Zodiel",
+scrivi("/calendario-lunare-2027/", pagina("/calendario-lunare-2027/", "Calendario lunare 2027: lune piene, lune nuove e tarocchi | 22 Arcani",
     "Calendario lunare 2027 con tutte le lune piene, le lune nuove e i quarti, giorno e ora italiana, con il segno della Luna e l'Arcano dei tarocchi collegato.",
     "Calendario lunare 2027 e tarocchi", "Calendario lunare 2027", corpo, faq=faq, immagine="18_la_luna"))
 
@@ -265,7 +265,7 @@ faq = [("Quando è Mercurio retrogrado nel 2027?", "Nel 2027 Mercurio è retrogr
             "da %s a %s" % (giorno(a), giorno(b)) for a, b in merc27 if a and b) + "."),
        ("Mercurio va davvero all'indietro?", "No. Il moto retrogrado è un effetto di prospettiva: visto dalla Terra, Mercurio sembra tornare indietro tra le stelle per alcune settimane, perché i due pianeti girano intorno al Sole a velocità diverse."),
        ("Che carta dei tarocchi è legata a Mercurio?", "Il Mago, Arcano Maggiore numero I, carta della parola, dell'ingegno e dell'iniziativa.")]
-scrivi("/mercurio-retrogrado-2027/", pagina("/mercurio-retrogrado-2027/", "Mercurio retrogrado 2027: date, orari e significato nei tarocchi | Zodiel",
+scrivi("/mercurio-retrogrado-2027/", pagina("/mercurio-retrogrado-2027/", "Mercurio retrogrado 2027: date, orari e significato nei tarocchi | 22 Arcani",
     "Tutte le date di Mercurio retrogrado nel 2027, in ora italiana, con il segno e il significato nei tarocchi: il Mago. In più Venere, Marte, Giove e Saturno retrogradi.",
     "Mercurio retrogrado 2027: date e significato nei tarocchi", "Mercurio retrogrado 2027", corpo, faq=faq, immagine=mago))
 
@@ -330,7 +330,7 @@ script = SCRIPT_CIELO + """  <script>
   </script>"""
 faq = [("Qual è la carta dei tarocchi del mio segno zodiacale?", "Ariete: l'Imperatore. Toro: il Papa. Gemelli: gli Amanti. Cancro: il Carro. Leone: la Forza. Vergine: l'Eremita. Bilancia: la Giustizia. Scorpione: la Morte. Sagittario: la Temperanza. Capricorno: il Diavolo. Acquario: la Stella. Pesci: la Luna."),
        ("Da dove vengono queste corrispondenze?", "Sono le corrispondenze della tradizione esoterica di fine Ottocento, poi riprese dal mazzo Rider-Waite e dalla maggior parte dei mazzi moderni. Sono simboliche: servono come spunto di riflessione.")]
-scrivi("/segni/", pagina("/segni/", "La carta dei tarocchi del tuo segno zodiacale: gli Arcani dei 12 segni | Zodiel",
+scrivi("/segni/", pagina("/segni/", "La carta dei tarocchi del tuo segno zodiacale: gli Arcani dei 12 segni | 22 Arcani",
     "Qual è l'Arcano Maggiore del tuo segno zodiacale? Le corrispondenze tradizionali tra i 12 segni, i pianeti e le carte dei tarocchi, con il significato di ogni carta.",
     "La carta dei tarocchi del tuo segno zodiacale", "Arcani e segni", corpo, script, faq=faq, immagine="21_il_mondo"))
 

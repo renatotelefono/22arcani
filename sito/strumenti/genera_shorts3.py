@@ -1,4 +1,4 @@
-# Zodiel – Shorts "stile 3": gancio con zoom, lettrice con zoom lento, stacchi sulla carta,
+# 22 Arcani – Shorts "stile 3": gancio con zoom, lettrice con zoom lento, stacchi sulla carta,
 # sottotitoli grandi, finale "Tocca il video collegato".
 # Uso: python3 strumenti/genera_shorts3.py 00_il_matto_Presente [altri codici...]
 import os, re, sys, subprocess, math
@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "youtube_grafica", "shorts3")
 FONTS = os.environ.get("ZODIEL_FONTS", os.path.expanduser("~/fonts"))
-if not os.path.isdir(FONTS): FONTS = os.path.join(BASE, "fonts")  # font salvati nella cartella zodiel_cloud
+if not os.path.isdir(FONTS): FONTS = os.path.join(BASE, "fonts")  # font salvati nella cartella 22arcani/sito
 W, H = 1080, 1920
 TURCH = (64, 224, 208); BIANCO = (238, 238, 238); GRIGIO = (170, 170, 170); NERO = (11, 11, 11)
 FPS = 25
@@ -99,8 +99,8 @@ def cornice(num, rov, pos, path):
     sub = (ROV[gen].upper() + " · " if rov else "") + POS[pos].upper()
     centrato(im, 210, sub, font("Cinzel[wght].ttf", 46, 600), BIANCO)
     fz = font("Cinzel[wght].ttf", 50, 700); d = ImageDraw.Draw(im)
-    centrato(im, 1650, "ZODIEL.CLOUD", fz, TURCH)
-    w = d.textlength("ZODIEL.CLOUD", font=fz); stella(d, (W-w)/2-38, 1680, 18, TURCH); stella(d, (W+w)/2+38, 1680, 18, TURCH)
+    centrato(im, 1650, "22ARCANI.IT", fz, TURCH)
+    w = d.textlength("22ARCANI.IT", font=fz); stella(d, (W-w)/2-38, 1680, 18, TURCH); stella(d, (W+w)/2+38, 1680, 18, TURCH)
     im.save(path)
 
 def stacco(num, rov, path):
@@ -116,7 +116,7 @@ def finale(path):
     centrato(im, 430, "Insieme raccontano", font("PlayfairDisplay[wght].ttf", 56), GRIGIO)
     centrato(im, 505, "molto di più", font("PlayfairDisplay[wght].ttf", 56), GRIGIO)
     centrato(im, 680, "LETTURA GRATIS", font("Cinzel[wght].ttf", 80, 700), BIANCO)
-    centrato(im, 790, "ZODIEL.CLOUD", font("CinzelDecorative-Bold.ttf", 116), TURCH, glow=True)
+    centrato(im, 790, "22ARCANI.IT", font("CinzelDecorative-Bold.ttf", 116), TURCH, glow=True)
     d = ImageDraw.Draw(im)
     d.rounded_rectangle([110, 1060, 970, 1250], radius=40, fill=(16, 52, 50, 255), outline=TURCH, width=5)
     centrato(im, 1090, "Tocca il video collegato", font("PlayfairDisplay[wght].ttf", 58, 700), BIANCO)

@@ -1,4 +1,4 @@
-// Zodiel – Interprete (prototipo). Cloudflare Worker.
+// 22 Arcani – Interprete (prototipo). Cloudflare Worker.
 // - POST /api/interpreta  -> lettura personalizzata
 // - GET  /                -> pagina di prova (solo se MODALITA_PROVA = "si")
 // Il testo scritto dagli utenti NON viene salvato né scritto nei log.

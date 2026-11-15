@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Zodiel – Calcolo del cielo (senza librerie esterne).
+22 Arcani – Calcolo del cielo (senza librerie esterne).
 Crea cielo.js con, per ogni giorno: longitudine di Sole e Luna, pianeti retrogradi
 ed eventi (fasi lunari esatte, equinozi/solstizi, ingressi del Sole, stazioni dei pianeti).
 
-Uso (dalla cartella zodiel_cloud):   python strumenti/genera_cielo.py 2026 2027
+Uso (dalla cartella 22arcani/sito):   python strumenti/genera_cielo.py 2026 2027
 Scrive cielo.js nella cartella principale del sito.
 Precisione: Sole ~0,01°, Luna ~0,1°, pianeti qualche minuto d'arco: più che sufficiente
 per segni zodiacali, fasi e moto retrogrado (verificato con la libreria "ephem").

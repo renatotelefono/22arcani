@@ -1,4 +1,4 @@
-# Zodiel – secondo blocco di Shorts: gancio iniziale + cornice + finale con invito al sito
+# 22 Arcani – secondo blocco di Shorts: gancio iniziale + cornice + finale con invito al sito
 # Uso: python3 strumenti/genera_shorts2.py [codice ...]   (es. 06_gli_amanti_r_Presente)
 import os, sys, subprocess
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -96,8 +96,8 @@ def cornice(num, rov, pos, path):
     d.text((300, 292), "cosa significa?", font=font("PlayfairDisplay[wght].ttf", 40), fill=GRIGIO)
     testo_centrato(d, 1722, "Qual è la TUA carta? Scoprilo gratis", font("PlayfairDisplay[wght].ttf", 40), BIANCO)
     fz = font("Cinzel[wght].ttf", 66, 700)
-    d = testo_centrato(d, 1790, "ZODIEL.CLOUD/YT", fz, TURCH, glow=True, img=im)
-    wz = d.textlength("ZODIEL.CLOUD/YT", font=fz)
+    d = testo_centrato(d, 1790, "22ARCANI.IT/YT", fz, TURCH, glow=True, img=im)
+    wz = d.textlength("22ARCANI.IT/YT", font=fz)
     stella(d, (W-wz)/2 - 45, 1828, 24, TURCH); stella(d, (W+wz)/2 + 45, 1828, 24, TURCH)
     im.save(path)
 
@@ -129,7 +129,7 @@ def finale(path):
     testo_centrato(d, 700, "Scegli 3 carte e scopri", font("PlayfairDisplay[wght].ttf", 56), GRIGIO)
     testo_centrato(d, 775, "passato, presente e futuro", font("PlayfairDisplay[wght].ttf", 56), GRIGIO)
     d = testo_centrato(d, 960, "LETTURA GRATIS", font("Cinzel[wght].ttf", 80, 700), BIANCO)
-    d = testo_centrato(d, 1080, "ZODIEL.CLOUD", font("CinzelDecorative-Bold.ttf", 118), TURCH, glow=True, img=im)
+    d = testo_centrato(d, 1080, "22ARCANI.IT", font("CinzelDecorative-Bold.ttf", 118), TURCH, glow=True, img=im)
     d.rounded_rectangle([190, 1330, 890, 1450], radius=60, outline=TURCH, width=4)
     testo_centrato(d, 1360, "Link nel commento in alto", font("PlayfairDisplay[wght].ttf", 46), BIANCO)
     stella(d, W/2, 1600, 50, TURCH)

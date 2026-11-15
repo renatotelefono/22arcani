@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Zodiel – Calcolo del cielo (senza librerie esterne).
+22 Arcani – Calcolo del cielo (senza librerie esterne).
 Crea cielo.js con, per ogni giorno: longitudine di Sole e Luna, pianeti retrogradi
 ed eventi (fasi lunari esatte, equinozi/solstizi, ingressi del Sole, stazioni dei pianeti).
 

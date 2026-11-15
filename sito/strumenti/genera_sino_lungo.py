@@ -1,4 +1,4 @@
-# Zodiel – video lungo 16:9 "Tarocchi sì o no: scegli una carta" con la voce di Google (Despina).
+# 22 Arcani – video lungo 16:9 "Tarocchi sì o no: scegli una carta" con la voce di Google (Despina).
 # Riprendibile: ogni chiamata crea i pezzi mancanti (max ~150 s di lavoro) e alla fine li unisce.
 # Uso: python3 strumenti/genera_sino_lungo.py      (ripetere finché stampa "FINITO")
 import os, sys, json, time, subprocess
@@ -36,7 +36,7 @@ def riga_voce(i):
     return "%s: dritta %s, rovesciata %s." % (d, PAROLA[a], PAROLA[b]) if A[i]["genere"] == "f" else \
            ("%s: dritti %s, rovesciati %s." % (d, PAROLA[a], PAROLA[b]) if A[i]["genere"] == "p" else "%s: dritto %s, rovesciato %s." % (d, PAROLA[a], PAROLA[b]))
 SEG = [
- ("intro", "Ciao, qui è Zodiel. Hai una domanda e cerchi una risposta semplice: sì o no? In questo video sono le carte dei tarocchi a risponderti. Pensa a una domanda chiara, che riguardi te e a cui si possa rispondere con un sì o con un no. Per esempio: questa persona tornerà da me? Troverò un nuovo lavoro? È il momento giusto per cambiare casa?", 0),
+ ("intro", "Ciao, qui è 22 Arcani. Hai una domanda e cerchi una risposta semplice: sì o no? In questo video sono le carte dei tarocchi a risponderti. Pensa a una domanda chiara, che riguardi te e a cui si possa rispondere con un sì o con un no. Per esempio: questa persona tornerà da me? Troverò un nuovo lavoro? È il momento giusto per cambiare casa?", 0),
  ("scelta", "Ora chiudi gli occhi per un momento, respira profondamente e concentrati sulla tua domanda. Davanti a te ci sono tre carte coperte. Scegli quella che ti attira di più: la uno, la due o la tre. Scrivi nei commenti il numero che hai scelto. Poi vai al capitolo della tua carta, oppure continua a guardare per scoprirle tutte.", 6),
  ("carta1", TESTI_CARTE[0], 0), ("carta2", TESTI_CARTE[1], 0), ("carta3", TESTI_CARTE[2], 0),
  ("tabella1", "Ecco ora le risposte di tutti i ventidue Arcani Maggiori, così potrai usarle anche con il tuo mazzo. " + " ".join(riga_voce(i) for i in IDS[:11]), 0),
@@ -49,7 +49,7 @@ def sfondo(piede=True):
     g = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ImageDraw.Draw(g).ellipse([200, 100, W - 200, H + 300], fill=(20, 70, 66, 255))
     im.alpha_composite(g.filter(ImageFilter.GaussianBlur(220)))
     if piede:
-        d = ImageDraw.Draw(im); f = CIN(30, 600); t = "·  ZODIEL.CLOUD  ·"
+        d = ImageDraw.Draw(im); f = CIN(30, 600); t = "·  22ARCANI.IT  ·"
         d.text(((W - d.textlength(t, font=f)) / 2, H - 60), t, font=f, fill=TURCH)
     return im
 def cx(im, y, t, f, col, x0=0, w=W, glow=False):
@@ -107,7 +107,7 @@ def img_tabella(parte):
 def img_finale():
     im = sfondo(); cx(im, 120, "Fai la TUA domanda", CIN(90, 700), BIANCO)
     cx(im, 260, "amore · lavoro · fortuna · benessere", CIN(52, 500), GRIGIO)
-    cx(im, 400, "ZODIEL.CLOUD/SI-O-NO", CIN(120, 700), TURCH, glow=True)
+    cx(im, 400, "22ARCANI.IT/SI-O-NO", CIN(120, 700), TURCH, glow=True)
     cx(im, 570, "Gratis, senza registrazione", CIN(50, 500), BIANCO)
     d = ImageDraw.Draw(im); d.rounded_rectangle([260, 720, 1660, 860], radius=40, fill=(16, 52, 50, 255), outline=TURCH, width=5)
     cx(im, 762, "Iscriviti: ogni giorno alle 12 una nuova lettura", CIN(46, 600), BIANCO, 260, 1400); return im

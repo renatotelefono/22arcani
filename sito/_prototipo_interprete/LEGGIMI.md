@@ -1,4 +1,4 @@
-# Prototipo "Interprete Zodiel" – istruzioni
+# Prototipo "Interprete 22 Arcani" – istruzioni
 
 Questa cartella è **esclusa da git** (riga aggiunta in `.git/info/exclude`, che resta solo sul tuo PC):
 non finisce nel push e non va online. Nessun file del sito è stato modificato.
@@ -15,7 +15,7 @@ non finisce nel push e non va online. Nessun file del sito è stato modificato.
 | `test_locale.mjs` | Test senza internet e senza costi (usa un finto modello). |
 
 ## Passo 1 – Test offline (gratis, nessun account)
-1. Apri la cartella `C:\Users\HP\Desktop\zodiel_cloud\_prototipo_interprete` in Esplora file.
+1. Apri la cartella `C:\Users\HP\Desktop\22arcani/sito\_prototipo_interprete` in Esplora file.
 2. Clic sulla barra dell'indirizzo, scrivi `powershell` e premi Invio.
 3. Scrivi `node -v` e premi Invio. Se vedi un numero (es. v22...) va bene; altrimenti installa
    Node.js "LTS" da nodejs.org e riapri PowerShell.
@@ -23,7 +23,7 @@ non finisce nel push e non va online. Nessun file del sito è stato modificato.
 
 ## Passo 2 – Prova con l'IA vera (gratis entro 10.000 "neuroni" al giorno)
 1. Nella stessa finestra PowerShell: `npx wrangler login`
-   (si apre il browser: entra con l'account Cloudflare **Zodiel** e autorizza).
+   (si apre il browser: entra con l'account Cloudflare **22 Arcani** e autorizza).
 2. Avvia: `npx wrangler dev --remote`
 3. Apri nel browser: http://localhost:8787
 4. Scegli carte, argomento, scrivi una situazione, scegli il modello e premi **Interpreta**.

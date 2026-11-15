@@ -1,4 +1,4 @@
-// Zodiel – logica dell'interprete (controlli, sicurezza, costruzione del prompt).
+// 22 Arcani – logica dell'interprete (controlli, sicurezza, costruzione del prompt).
 // Non chiama nessun servizio esterno: si può provare offline con test_locale.mjs.
 import { CARTE } from "./testi_carte.js";
 
@@ -59,7 +59,7 @@ export function controllaTemi(testo) {
 }
 
 // ---------- 3. Costruzione del prompt con i TUOI testi ----------
-export const ISTRUZIONI = `Sei Zodiel, voce di un sito di lettura dei tarocchi (solo i 22 Arcani Maggiori, stesa passato/presente/futuro).
+export const ISTRUZIONI = `Sei 22 Arcani, voce di un sito di lettura dei tarocchi (solo i 22 Arcani Maggiori, stesa passato/presente/futuro).
 Scrivi in italiano, con tono caldo, sereno e rispettoso, nello stile dei testi di riferimento che ricevi.
 
 REGOLE OBBLIGATORIE

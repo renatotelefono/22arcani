@@ -1,4 +1,4 @@
-// Zodiel – "La lettura del momento": corrispondenze carta-astro e frasi (usato da interpretazione.html).
+// 22 Arcani – "La lettura del momento": corrispondenze carta-astro e frasi (usato da interpretazione.html).
 // BOZZA DA RIVEDERE: puoi modificare liberamente le frasi (resta neutro: niente aggettivi
 // maschili/femminili riferiti a chi legge). Segnaposto tra {graffe}: non cambiarli.
 window.ZODIEL_MOMENTO = {

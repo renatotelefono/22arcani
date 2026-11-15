@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – Sintesi finale della lettura
+   22 Arcani – Sintesi finale della lettura
    Collega le tre carte (passato, presente, futuro) in un breve testo.
    Usa i dati di sintesi_dati.js (generato da strumenti/genera_arcani.py).
    ========================================================== */

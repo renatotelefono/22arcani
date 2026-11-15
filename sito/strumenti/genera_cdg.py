@@ -1,4 +1,4 @@
-# Zodiel – Short "Carta del giorno": stessa carta che il sito mostra in home quel giorno
+# 22 Arcani – Short "Carta del giorno": stessa carta che il sito mostra in home quel giorno
 # (algoritmo di carta_giorno.js), spiegata dalla lettrice (video "Presente").
 # Uso: python3 strumenti/genera_cdg.py 2026-11-01 [2026-11-02 ...]
 # Richiede node (per calcolare la carta del giorno da carta_giorno.js).
@@ -48,8 +48,8 @@ def cornice(num, rov, pos, path):
     t = nome.upper(); C(im, 110, t, g3.adatta(d, t, "Cinzel[wght].ttf", 96, 1000, 700), TURCH, glow=True)
     if rov: C(im, 222, g3.ROV[gen].upper(), F("Cinzel[wght].ttf", 44, 600), BIANCO)
     fz = F("Cinzel[wght].ttf", 50, 700); d = ImageDraw.Draw(im)
-    C(im, 1650, "ZODIEL.CLOUD", fz, TURCH)
-    w = d.textlength("ZODIEL.CLOUD", font=fz); g3.stella(d, (W-w)/2-38, 1680, 18, TURCH); g3.stella(d, (W+w)/2+38, 1680, 18, TURCH)
+    C(im, 1650, "22ARCANI.IT", fz, TURCH)
+    w = d.textlength("22ARCANI.IT", font=fz); g3.stella(d, (W-w)/2-38, 1680, 18, TURCH); g3.stella(d, (W+w)/2+38, 1680, 18, TURCH)
     im.save(path)
 
 def finale(path):
@@ -58,7 +58,7 @@ def finale(path):
     C(im, 315, "per tutti.", F("Cinzel[wght].ttf", 66, 600), BIANCO)
     C(im, 470, "E le TUE 3 carte?", F("Cinzel[wght].ttf", 80, 700), BIANCO)
     C(im, 650, "SCOPRILE GRATIS", F("Cinzel[wght].ttf", 74, 700), BIANCO)
-    C(im, 760, "ZODIEL.CLOUD", F("Cinzel[wght].ttf", 116, 700), TURCH, glow=True)
+    C(im, 760, "22ARCANI.IT", F("Cinzel[wght].ttf", 116, 700), TURCH, glow=True)
     d.rounded_rectangle([110, 1020, 970, 1210], radius=40, fill=(16, 52, 50, 255), outline=TURCH, width=5)
     C(im, 1050, "Tocca il video collegato", F("Cinzel[wght].ttf", 52, 700), BIANCO)
     C(im, 1125, "qui sotto", F("Cinzel[wght].ttf", 52, 700), BIANCO)

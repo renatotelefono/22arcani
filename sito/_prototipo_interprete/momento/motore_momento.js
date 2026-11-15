@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zodiel – "La lettura del momento"
+   22 Arcani – "La lettura del momento"
    Collega le 3 carte al cielo reale (Luna, Sole, pianeti) e all'ora del giorno.
    Usa: cielo.js (genera_cielo.py), momento_dati.js, sintesi_dati.js.
    Stesse carte + stesso momento = stesso testo; momento diverso = testo diverso.

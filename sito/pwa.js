@@ -1,7 +1,7 @@
 /* ==========================================================
-   Zodiel – App installabile (PWA)
+   22 Arcani – App installabile (PWA)
    - registra il service worker
-   - sul telefono mostra il pulsante "Installa Zodiel"
+   - sul telefono mostra il pulsante "Installa 22 Arcani"
      · Android/Chrome: installazione con un tocco
      · iPhone/iPad: riquadro con i 3 passaggi
    - non disturba: compare dopo qualche secondo, mai sopra il banner
@@ -79,7 +79,7 @@
     var d = document.createElement("div");
     d.id = "pwa-ios";
     d.innerHTML =
-      '<div class="pwa-box"><h3>Installa Zodiel sul tuo iPhone</h3><ol>' +
+      '<div class="pwa-box"><h3>Installa 22 Arcani sul tuo iPhone</h3><ol>' +
       '<li>Tocca <span class="pwa-ico">Condividi ⇪</span> (il quadrato con la freccia in su, in basso o in alto nello schermo)</li>' +
       '<li>Scorri e tocca <b>Aggiungi alla schermata Home</b></li>' +
       '<li>Tocca <b>Aggiungi</b></li></ol>' +
@@ -94,7 +94,7 @@
     stile();
     pulsante = document.createElement("div");
     pulsante.id = "pwa-pulsante";
-    pulsante.innerHTML = '<button type="button" class="pwa-installa">📲 Installa Zodiel</button>' +
+    pulsante.innerHTML = '<button type="button" class="pwa-installa">📲 Installa 22 Arcani</button>' +
                          '<button type="button" class="pwa-x" aria-label="Chiudi">×</button>';
     pulsante.querySelector(".pwa-x").addEventListener("click", function () { chiudi(true); traccia("pwa_pulsante_chiuso"); });
     pulsante.querySelector(".pwa-installa").addEventListener("click", function () {

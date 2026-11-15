@@ -1,4 +1,4 @@
-# Zodiel – pagina "Tarocchi sì o no" (22arcani.it/si-o-no/).
+# 22 Arcani – pagina "Tarocchi sì o no" (22arcani.it/si-o-no/).
 # Uso: python3 strumenti/genera_si_no.py
 import os, re, json, html
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +23,7 @@ dati = {i: {"n": A[i]["nome"], "g": A[i]["genere"], "kw": [A[i]["kw"][0][:3], A[
             "c": A[i]["consiglio"], "r": list(R[i]), "s": slug(i)} for i in ids}
 righe = "\n".join(f'<tr><td><a href="/arcani/{slug(i)}">{html.escape(A[i]["nome"])}</a></td><td class="r-{R[i][0]}">{ETI[R[i][0]]}</td><td class="r-{R[i][1]}">{ETI[R[i][1]]}</td></tr>' for i in ids)
 faq = [("Come funzionano i tarocchi sì o no?", "Scegli un argomento (amore, lavoro, soldi e fortuna, benessere, famiglia o crescita personale) e una delle domande proposte, poi concentrati e pesca una carta. Ogni Arcano Maggiore ha una risposta tradizionale, che cambia se la carta esce dritta o rovesciata: sì, no oppure forse."),
-       ("I tarocchi sì o no sono gratis?", "Sì, su Zodiel la lettura sì o no è completamente gratuita e senza registrazione. Puoi fare tutte le domande che vuoi."),
+       ("I tarocchi sì o no sono gratis?", "Sì, su 22 Arcani la lettura sì o no è completamente gratuita e senza registrazione. Puoi fare tutte le domande che vuoi."),
        ("Quali carte dicono sì?", "Le carte più favorevoli sono il Sole, la Stella, il Mondo, il Mago, il Carro e la Ruota della Fortuna. Il Sole dice sì anche quando esce rovesciato."),
        ("Quali carte dicono no?", "La Torre dice no sia dritta sia rovesciata. Anche la Morte e il Diavolo dritti, e la maggior parte delle carte rovesciate, invitano ad aspettare."),
        ("Posso fare la stessa domanda più volte?", "Meglio di no: la prima risposta è quella che conta. Se la risposta è forse, prova a riformulare la domanda o fai una lettura completa a tre carte.")]
@@ -55,11 +55,11 @@ pagina = f'''<!DOCTYPE html>
   <script src="/pwa.js" defer></script>
   <script src="/analytics.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tarocchi Sì o No Gratis: fai la tua domanda e pesca una carta | Zodiel</title>
+  <title>Tarocchi Sì o No Gratis: fai la tua domanda e pesca una carta | 22 Arcani</title>
   <meta name="description" content="Tarocchi sì o no gratis su amore, lavoro, fortuna e benessere: scegli la tua domanda, pesca una carta tra i 22 Arcani Maggiori e scopri subito se la risposta è sì, no o forse. Senza registrazione.">
   <link rel="canonical" href="https://22arcani.it/si-o-no/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Tarocchi Sì o No Gratis | Zodiel">
+  <meta property="og:title" content="Tarocchi Sì o No Gratis | 22 Arcani">
   <meta property="og:description" content="Fai una domanda e pesca una carta: sì, no o forse?">
   <meta property="og:url" content="https://22arcani.it/si-o-no/">
   <meta property="og:image" content="https://22arcani.it/asset/img_it/19_il_sole.jpeg">
@@ -103,7 +103,7 @@ pagina = f'''<!DOCTYPE html>
 </head>
 <body>
   <header class="testata">
-    <a class="logo" href="/">Zodiel</a>
+    <a class="logo" href="/">22 Arcani</a>
     <nav><a href="/oggi/">Lettura di oggi</a> <a href="/arcani/">Arcani Maggiori</a> <a class="pill" href="/master">Fai una lettura</a></nav>
   </header>
 
