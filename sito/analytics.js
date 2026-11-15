@@ -3,7 +3,7 @@
    GA viene caricato SOLO dopo che il visitatore clicca "Accetta".
    ========================================================== */
 (function () {
-  var GA_ID = "G-B1SZLGV6DR";
+  var GA_ID = "G-FLHYXMJSBS";
   var CHIAVE = "zodiel_consenso_cookie"; // valori: "si" | "no"
 
   // --- gtag di base (gli eventi restano in coda finché GA non è caricato) ---
