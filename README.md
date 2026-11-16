@@ -19,7 +19,7 @@ Ogni push sul ramo `main` viene pubblicato in automatico da Cloudflare Pages.
 
 - Progetto separato da Zodiel 1 (zodiel.cloud): nessun file in comune.
 - Fase iniziale: lettura a tre carte con mazzo ridotto (3 carte, 18 spezzoni "solo mani").
-- La sintesi finale della lettura è scritta dal modello `tarocchi` (Qwen 1.5B addestrato con LoRA) ed è indicata come generata da IA. Se il modello non risponde, la pagina mostra la sintesi classica di `sito/sintesi.js`.
+- La sintesi finale della lettura è scritta dal modello `tarocchi` (Qwen 1.5B addestrato con LoRA). Se il modello non risponde, la pagina mostra la sintesi classica di `sito/sintesi.js`.
 
 ## Sintesi con il modello (Ollama)
 

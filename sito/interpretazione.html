@@ -336,8 +336,7 @@
       const classica = () => {
         box.innerHTML = paragrafiClassici.map(p => `<p>${p}</p>`).join("");
       };
-      const notaIA = `<p class="sintesi-nota">Questa sintesi è scritta da un modello di intelligenza artificiale a partire dai significati tradizionali delle carte.</p>`;
-      if (testoIA) { box.innerHTML = testoInParagrafi(testoIA) + notaIA; return; }
+      if (testoIA) { box.innerHTML = testoInParagrafi(testoIA); return; }
 
       const carta = f => ({ id: lettura[f].nome, dritta: !!lettura[f].dritta });
       const ctrl = new AbortController();
@@ -362,7 +361,7 @@
         }
         if (testo.trim().length < 40) throw new Error("testo troppo corto");
         testoIA = testo;
-        box.innerHTML = testoInParagrafi(testo) + notaIA;
+        box.innerHTML = testoInParagrafi(testo);
         try { sessionStorage.setItem("sintesi_ia", testo); } catch (e) {}
         traccia("sintesi_ia", { esito: "ok" });
       } catch (e) {
