@@ -26,7 +26,7 @@ Ogni push sul ramo `main` viene pubblicato in automatico da Cloudflare Pages.
 Percorso di una richiesta:
 
 1. `sito/interpretazione.html` chiama `POST /api/lettura` con gli id delle tre carte e il verso.
-2. `functions/api/lettura.js` (Pages Function) costruisce il prompt con i significati di `sito/sintesi_dati.js` e chiama `https://api.22arcani.it/api/generate`.
+2. `functions/api/lettura.js` (Pages Function) costruisce il prompt nello stesso formato degli esempi di addestramento (`PASSATO: Nome (carta dritta|rovesciata)` + testo di `sito/asset/descrizione_it/`, poi PRESENTE e FUTURO) e chiama `https://api.22arcani.it/api/generate`.
 3. Cloudflare Access (applicazione `api`, policy `solo sito`, Service Auth) lascia passare solo le richieste con il service token `22arcani-sito`.
 4. Cloudflare Tunnel `22arcani-linux` porta la richiesta a Ollama (`localhost:11434`) sul PC Linux.
 

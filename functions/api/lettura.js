@@ -8,6 +8,14 @@
    il testo della richiesta al modello lo costruisce questa
    funzione, così nessuno può usare Ollama per altri scopi.
 
+   La richiesta usa ESATTAMENTE il formato degli esempi di
+   addestramento (llm_local/data/*.jsonl):
+     PASSATO: <Nome> (carta dritta|rovesciata)
+     <testo di asset/descrizione_it/<id>[_r]_Passato.md>
+     (riga vuota, poi PRESENTE e FUTURO allo stesso modo)
+   Le descrizioni sono le stesse che il visitatore legge
+   nelle tre fasi della pagina interpretazione.
+
    Variabili richieste (Pages > Settings > Variables and secrets):
      CF_ACCESS_CLIENT_ID, CF_ACCESS_CLIENT_SECRET
    ========================================================== */
@@ -33,21 +41,29 @@ function errore(messaggio, stato) {
   });
 }
 
-function verso(genere, dritta) {
-  const base = dritta ? "dritt" : "rovesciat";
-  return base + (genere === "f" ? "a" : genere === "p" ? "i" : "o");
+// Come negli esempi di addestramento: spazi a fine riga tolti
+// e apostrofi tipografici convertiti in apostrofi semplici.
+function pulisci(testo) {
+  return testo.replace(/^\uFEFF/, "").replace(/[\u2018\u2019]/g, "'")
+    .replace(/\r\n/g, "\n").split("\n").map(r => r.trim()).join("\n").trim();
 }
 
-function creaPrompt(lettura, dati) {
-  const righe = POSIZIONI.map(p => {
+async function descrizione(env, request, id, dritta, posizione) {
+  const file = `/asset/descrizione_it/${id}${dritta ? "" : "_r"}_${posizione}.md`;
+  const r = await env.ASSETS.fetch(new URL(file, request.url));
+  if (!r.ok) throw new Error("descrizione mancante: " + file);
+  return pulisci(await r.text());
+}
+
+async function creaPrompt(env, request, lettura, dati) {
+  const blocchi = [];
+  for (const p of POSIZIONI) {
     const c = lettura[p];
-    const d = dati[c.id];
-    const kw = d.kw[c.dritta ? 0 : 1].join(", ");
-    const pos = p.charAt(0).toUpperCase() + p.slice(1);
-    return `- ${pos}: ${d.nome} (${verso(d.genere, c.dritta)}). Significato secondo Waite: ${kw}.`;
-  });
-  return "Carte:\n" + righe.join("\n") +
-         "\nScrivi una lettura basandoti solo su questi significati.";
+    const pos = p.charAt(0).toUpperCase() + p.slice(1);   // "Passato"
+    const testo = await descrizione(env, request, c.id, c.dritta, pos);
+    blocchi.push(`${p.toUpperCase()}: ${dati[c.id].nome} (carta ${c.dritta ? "dritta" : "rovesciata"})\n${testo}`);
+  }
+  return blocchi.join("\n\n");
 }
 
 export async function onRequestPost({ request, env }) {
@@ -70,6 +86,9 @@ export async function onRequestPost({ request, env }) {
     lettura[p] = { id, dritta: c.dritta };
   }
 
+  let prompt;
+  try { prompt = await creaPrompt(env, request, lettura, dati); } catch (e) { return errore("descrizioni non disponibili", 500); }
+
   let risposta;
   try {
     risposta = await fetch(OLLAMA_URL, {
@@ -79,7 +98,7 @@ export async function onRequestPost({ request, env }) {
         "CF-Access-Client-Id": env.CF_ACCESS_CLIENT_ID,
         "CF-Access-Client-Secret": env.CF_ACCESS_CLIENT_SECRET
       },
-      body: JSON.stringify({ model: MODELLO, prompt: creaPrompt(lettura, dati), stream: true })
+      body: JSON.stringify({ model: MODELLO, prompt, stream: true })
     });
   } catch (e) {
     return errore("modello non raggiungibile", 502);
