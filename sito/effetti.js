@@ -9,7 +9,7 @@
   stile.textContent = `
     .flip3d { perspective: 1000px; margin-top: 6px; }
     .flip3d-interno { position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
-                      transition: transform 1.4s ease-in-out; }
+                      transition: transform 0.7s ease-in-out; }
     .flip3d.girata .flip3d-interno { transform: rotateY(180deg); }
     .flip3d-faccia { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden;
                      border-radius: 10px; object-fit: cover; box-shadow: 0 0 18px #40E0D0; }
@@ -112,9 +112,9 @@
         requestAnimationFrame(() => box.classList.add("girata"));
         setTimeout(() => {
           fine();
-        }, 1500);
+        }, 750);
       };
-      if (fronte.complete) setTimeout(gira, 400);
+      if (fronte.complete) setTimeout(gira, 150);
       else { fronte.onload = gira; fronte.onerror = gira; }
     };
     }
