@@ -94,7 +94,7 @@
     stile();
     pulsante = document.createElement("div");
     pulsante.id = "pwa-pulsante";
-    pulsante.innerHTML = '<button type="button" class="pwa-installa">📲 Installa 22 Arcani</button>' +
+    pulsante.innerHTML = '<button type="button" class="pwa-installa">Installa 22 Arcani</button>' +
                          '<button type="button" class="pwa-x" aria-label="Chiudi">×</button>';
     pulsante.querySelector(".pwa-x").addEventListener("click", function () { chiudi(true); traccia("pwa_pulsante_chiuso"); });
     pulsante.querySelector(".pwa-installa").addEventListener("click", function () {

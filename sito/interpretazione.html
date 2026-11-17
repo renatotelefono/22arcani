@@ -214,6 +214,7 @@
     .sintesi-scheda { font-size: 14px; opacity: .75; margin: 0 0 12px !important; }
   </style>
   <link rel="stylesheet" href="mobile.css?v=2">
+  <link rel="stylesheet" href="medievale.css?v=1">
 </head>
 <body>
 
@@ -283,12 +284,12 @@
         })
         .then(testo => document.getElementById("descrizione").innerText = testo)
         .catch(() => {
-          document.getElementById("descrizione").innerText = "⚠️ File non trovato: " + descrizioneFile;
+          document.getElementById("descrizione").innerText = "File non trovato: " + descrizioneFile;
           traccia("file_mancante", { tipo: "descrizione", file: descrizioneFile });
         });
 
       const btn = document.getElementById("btnAvanti");
-      if (btn) btn.innerText = faseCorrente < 2 ? "Avanti" : "✨ Sintesi";
+      if (btn) btn.innerText = faseCorrente < 2 ? "Avanti" : "Sintesi";
     }
 
     function avanti() {
@@ -380,7 +381,7 @@
         if (!window.creaLetturaMomento) return "";
         const m = window.creaLetturaMomento(lettura, new Date());
         traccia("momento_vista", { fase_luna: m.cielo.fase, risonanze: m.risonanze.length });
-        return `<div class="sintesi-momento"><h3>🌙 Il cielo di questo momento</h3>` +
+        return `<div class="sintesi-momento"><h3>Il cielo di questo momento</h3>` +
                `<p class="sintesi-scheda">${m.scheda}</p>` +
                m.paragrafi.map(p => `<p>${p}</p>`).join("") + `</div>`;
       } catch (e) {
@@ -393,9 +394,9 @@
       const container = document.getElementById("pulsantiContainer");
       container.innerHTML = `
         <div class="pulsanti-finali">
-          <button class="bottone-avanti" onclick="rileggi()">🔁 Rileggi</button>
-          <button class="bottone-avanti" onclick="generaPDF()">📜 Genera PDF</button>
-          <button class="bottone-avanti" onclick="fine()">🔚 Fine</button>
+          <button class="bottone-avanti" onclick="rileggi()">Rileggi</button>
+          <button class="bottone-avanti" onclick="generaPDF()">Genera PDF</button>
+          <button class="bottone-avanti" onclick="fine()">Fine</button>
         </div>
       `;
     }
