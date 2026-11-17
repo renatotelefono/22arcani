@@ -5,7 +5,9 @@
    Vale solo sotto i 1000px di larghezza: il PC non cambia.
    ========================================================== */
 
-/* Font coerente sui pulsanti principali (anche su PC) */
+/* Un solo carattere in tutto il sito della lettura: Playfair Display
+   (lo stesso della sintesi). I pulsanti altrimenti userebbero Arial. */
+button,
 .inizia-sotto,
 .descrizione-home .cta {
   font-family: 'Playfair Display', serif;
