@@ -1,0 +1,176 @@
+/* ==========================================================
+   22 Arcani – Adattamento a telefoni e tablet
+   Caricato per ULTIMO in index, master, interpretazione,
+   istruzioni e genera_pdf (dopo stile.css e gli stili interni).
+   Vale solo sotto i 1000px di larghezza: il PC non cambia.
+   ========================================================== */
+
+/* Font coerente sui pulsanti principali (anche su PC) */
+.inizia-sotto,
+.descrizione-home .cta {
+  font-family: 'Playfair Display', serif;
+}
+
+@media (max-width: 999px) {
+
+  html { -webkit-text-size-adjust: 100%; }
+  body { overflow-x: hidden; }
+
+  /* ---------- Pulsanti: stile.css li forza a 22px con !important ---------- */
+  button {
+    font-size: 17px !important;
+    padding: 12px 22px !important;
+    min-height: 44px;                 /* area minima di tocco */
+  }
+
+  /* Link "Privacy e cookie": sul telefono non resta fisso sopra il testo,
+     va in fondo alla pagina, con un'area comoda da toccare */
+  a[href="privacy.html"] {
+    position: static !important;
+    display: block;
+    width: max-content;
+    margin: 8px auto 12px;
+    font-size: 14px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* =================== HOME =================== */
+  /* unità che scala tutta la ruota: 1px fino a 700px, poi si riduce */
+  :root { --u: min(1px, calc((100vw - 24px) / 700)); }
+
+  .container {
+    width: calc(700 * var(--u));
+    height: calc(700 * var(--u));
+    overflow: hidden;          /* la ruota che gira non deve allargare la pagina */
+    border-radius: 50%;
+  }
+  .center-hole {
+    width: calc(402 * var(--u));
+    height: calc(402 * var(--u));
+  }
+  .cdg-etichetta { font-size: max(12px, calc(17 * var(--u))); margin-bottom: calc(10 * var(--u)); letter-spacing: .5px; }
+  .flip { width: calc(150 * var(--u)); height: calc(252 * var(--u)); }
+  .cdg-nome { font-size: max(13px, calc(19 * var(--u))); margin-top: calc(10 * var(--u)); max-width: calc(330 * var(--u)); }
+  .cdg-tocca { font-size: max(11px, calc(13 * var(--u))); max-width: calc(300 * var(--u)); }
+
+  .hero { min-height: auto; padding: 16px 0 8px; }
+  .inizia-sotto {
+    font-size: 21px !important;
+    padding: 13px 40px !important;
+    margin-top: 16px;
+  }
+  .novita-cielo { font-size: 15px; padding: 10px 16px; margin-top: 14px; }
+  .hero .scopri { display: inline-block; padding: 10px 12px; margin-top: 4px; }
+
+  .descrizione-home { font-size: 17px; padding: 28px 18px 72px; }
+  .descrizione-home h1 { font-size: 24px; }
+  .descrizione-home h2 { font-size: 20px; }
+  .descrizione-home a { padding: 2px 0; }
+  .descrizione-home .cta { font-size: 20px; padding: 13px 32px; }
+
+  .cdg-finestra { font-size: 17px; }
+  .cdg-chiudi { min-height: 0; width: 44px; height: 44px; font-size: 30px !important; top: 2px; right: 4px; }
+  .cdg-azioni a, .cdg-azioni button { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* =================== MASTER (mescola e scegli) =================== */
+  .barra {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 8px;
+  }
+  .barra button {
+    font-size: 16px !important;
+    padding: 10px 16px !important;
+  }
+  .barra button:hover { transform: none; }
+
+  .area-lettura { margin-top: 18px; padding: 0 8px; }
+
+  .slot-container {
+    width: 100%;
+    max-width: 900px;
+    gap: 8px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  .slot {
+    width: calc((min(100vw, 900px) - 32px) / 3);
+    height: calc((min(100vw, 900px) - 32px) / 3 * 1.675);
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .slot h3 { font-size: 14px; margin: 6px 0 2px; }
+
+  .area-mazzo {
+    width: 100%;
+    max-width: 900px;
+    gap: 6px;
+  }
+  .carta {
+    width: calc((min(100vw, 900px) - 16px - 5 * 6px) / 6);
+    height: calc((min(100vw, 900px) - 16px - 5 * 6px) / 6 * 1.675);
+  }
+  .carta:hover { transform: none; }
+
+  /* =================== INTERPRETAZIONE =================== */
+  .contenitore-interpretazione {
+    width: auto;
+    max-width: 900px;
+    margin-top: 16px;
+    padding: 0 12px 24px;
+    box-sizing: border-box;
+  }
+  .titolo-fase { font-size: 24px; margin: 4px 0 16px; }
+  .contenitore-visivo { gap: 16px; margin-bottom: 16px; width: 100%; }
+  .carta-immagine {
+    width: min(240px, 58vw);
+    height: auto;
+  }
+  video {
+    width: 100%;
+    max-width: 600px;
+  }
+  .testo-descrizione {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 17px;
+    padding: 16px;
+  }
+  #pulsantiContainer { margin-top: 18px; }
+  .pulsanti-finali {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .bottone-avanti:hover { transform: none; }
+
+  .sintesi-carte { gap: 14px; }
+  .sintesi-carte img { width: min(96px, 26vw); }
+  .sintesi-testo { font-size: 17px; padding: 16px 18px; }
+
+  /* =================== ISTRUZIONI =================== */
+  .istruzioni {
+    margin: 14px 12px 60px;
+    padding: 20px 18px;
+    font-size: 18px;
+  }
+  .istruzioni h2 { font-size: 24px; margin-bottom: 16px; }
+  #testoIstruzioni ul { margin-left: 4px; padding-left: 18px; }
+
+  /* =================== GENERA PDF =================== */
+  .contenitore-pdf { margin-top: 40px; padding: 0 16px; }
+  .contenitore-pdf button { margin: 10px 6px; }
+}
+
+/* Telefoni: nel cerchio non c'è spazio per l'invito "tocca la carta"
+   (la carta resta toccabile) */
+@media (max-width: 560px) {
+  .cdg-tocca { display: none; }
+}
+
+/* Telefoni molto stretti (es. 320px): la barra resta su due righe ordinate */
+@media (max-width: 380px) {
+  .barra button { font-size: 15px !important; padding: 10px 12px !important; }
+  .inizia-sotto { font-size: 19px !important; padding: 12px 30px !important; }
+}
