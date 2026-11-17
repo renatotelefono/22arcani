@@ -60,7 +60,7 @@
       const r = img.getBoundingClientRect();
       const c = document.createElement("img");
       c.src = "asset/dorso.jpeg";
-      c.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;border-radius:8px;box-shadow:0 0 12px rgba(64,224,208,.6)`;
+      c.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;border-radius:6px;box-shadow:0 0 0 1px #c9a45c,0 0 0 3px #0c0905,0 0 0 4px #8a6a2f,0 4px 10px rgba(0,0,0,.7)`;
       c.style.transform = `translate(${r.left - cx}px, ${r.top - cy}px)`;
       c.style.zIndex = i;
       strato.appendChild(c);

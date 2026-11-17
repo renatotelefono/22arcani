@@ -12,12 +12,12 @@
                       transition: transform 0.7s ease-in-out; }
     .flip3d.girata .flip3d-interno { transform: rotateY(180deg); }
     .flip3d-faccia { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden;
-                     border-radius: 10px; object-fit: cover; box-shadow: 0 0 18px #40E0D0; }
+                     border-radius: 6px; object-fit: cover; box-shadow: 0 0 0 1px #c9a45c, 0 0 0 3px #0c0905, 0 0 0 4px #8a6a2f, 0 6px 14px rgba(0,0,0,.75); }
     .flip3d-fronte { transform: rotateY(180deg); }
     .flip3d-ruota { width: 100%; height: 100%; }
     .flip3d.rovesciata .flip3d-ruota { transform: rotate(180deg); }
-    .carta-in-volo { position: fixed; z-index: 100; pointer-events: none; border-radius: 8px;
-                     box-shadow: 0 0 30px #40E0D0; }
+    .carta-in-volo { position: fixed; z-index: 100; pointer-events: none; border-radius: 6px;
+                     box-shadow: 0 0 0 1px #c9a45c, 0 0 0 3px #0c0905, 0 0 0 4px #8a6a2f, 0 14px 26px rgba(0,0,0,.8); }
   `;
   document.head.appendChild(stile);
 
