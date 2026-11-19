@@ -42,3 +42,6 @@ button:disabled{filter:grayscale(.5) brightness(.75)}
 .cdg-finestra strong{color:var(--oro-chiaro)!important}
 .cdg-azioni a,.cdg-azioni button:not(.primario){background:transparent!important;color:var(--oro)!important;border:1px solid var(--oro-scuro)!important;border-radius:4px!important;box-shadow:none!important}
 .cdg-azioni a:hover,.cdg-azioni button:not(.primario):hover{border-color:var(--oro)!important;color:var(--oro-chiaro)!important}
+
+/* PC: titolo dello spazio (Passato/Presente/Futuro) più vicino alla carta */
+@media (min-width: 1000px) { .slot h3 { margin-bottom: 8px !important; } }

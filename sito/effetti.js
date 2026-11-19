@@ -21,9 +21,23 @@
   `;
   document.head.appendChild(stile);
 
+  // Su PC lo spazio sotto la carta è calcolato con i margini veri del titolo
+  // (la cornice d'oro sporge di 4px); telefono e tablet restano come prima.
+  const MARGINE_PC = 16;
   function misuraSlot(slot) {
     const h3 = slot.querySelector("h3");
-    const altezza = slot.clientHeight - (h3 ? h3.offsetHeight + 24 : 0) - 16;
+    let altezza;
+    if (window.matchMedia("(max-width: 999px)").matches) {
+      altezza = slot.clientHeight - (h3 ? h3.offsetHeight + 24 : 0) - 16;
+    } else {
+      let titolo = 0;
+      if (h3) {
+        const cs = getComputedStyle(h3);
+        titolo = h3.offsetHeight + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom);
+      }
+      // 6px = margine sopra la carta (.flip3d); il resto si divide sopra e sotto
+      altezza = slot.clientHeight - titolo - 6 - 2 * MARGINE_PC;
+    }
     const larghezza = Math.min(slot.clientWidth * 0.9, altezza / 1.675);
     return { w: Math.round(larghezza), h: Math.round(larghezza * 1.675) };
   }
